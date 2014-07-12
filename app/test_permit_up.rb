@@ -1,10 +1,7 @@
-# permit_up.rb
-# This is for the automation of updating the City of Raleigh Building Permits data-set on Socrata.
-# All new permit data from the past two days will be uploaded to Socrata's open data portal for the city of Raleigh.
-# It should be run via a cron job on a daily basis.
+# test_permit_up.rb
+# This is for the automation of updating the permit test set data-set on Socrata.
+# All new permit data from the past two days (dev database only) will be uploaded to Socrata's open data portal for the city of Raleigh.
 # To run manually: ruby permit_up.rb from this files directory.
-
-
 
 require 'net/https'
 require 'hashie'
@@ -20,7 +17,7 @@ require_relative '../lib/defaults.rb'
 require_relative '../lib/helpers.rb'
  
  
-DB = Sequel.oracle( :database => configatron.db, :host => configatron.host, :port => 1531, :user => configatron.user, :password => configatron.pass)
+DB = Sequel.oracle( :database => 'irisdev', :host => 'ucsdevrac1',  :port => 1531, :user => configatron.user_dev, :password => configatron.pass_dev)
 
 
 class UpdatePermit
@@ -38,15 +35,15 @@ class UpdatePermit
       :ignore_ssl => true }) 
 
     @db = db
-    @view_id = 'hk3n-ieai'           #permit data-set code for Socrata
+    @view_id = '3rng-pv3r'           #permit data-set code for Socrata
     @payload =[]
-    @date = (Date.today - 3.days).strftime(UpdatePermit::DATE_FORMAT)
+    @date = (Date.today - 100.days).strftime(UpdatePermit::DATE_FORMAT)
     @counter=0 
   end
 
   def process 
-    LOGGER.info "Update initiated. Start date #{@date}"
-    puts @date
+    LOGGER.info "Update initiated. Start date: '#{@date}'"
+    puts "start date: #{@date}"
     @sql = get_sql_by_date(@date)
     transform
   end
@@ -116,12 +113,12 @@ class UpdatePermit
 
       response = @client.post(@view_id, @payload)
 
-      puts response["Errors"].to_s + 'Errors'
+      puts response["Errors"].to_s + ' Errors'
       puts response["Rows Deleted"].to_s + ' Rows Deleted'
       puts response["Rows Created"].to_s + ' Rows Created'
       puts response["Rows Updated"].to_s + ' Rows Updated'
-      LOGGER.info "Update complete using permit_up.rb"
-      LOGGER.info "Update complete #{response["Errors"]} Errors"
+      LOGGER.info "Update complete using test_permit_up.rb"
+      LOGGER.info "Update complete  #{response["Errors"]}  Errors"
       LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"
       LOGGER.info "................. #{response["Rows Created"]} Rows Created"
       LOGGER.info "................. #{response["Rows Updated"]} Rows Updated"

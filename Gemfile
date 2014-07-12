@@ -6,5 +6,5 @@ gem 'ruby-oci8', '~> 2.1.5'
 gem 'sequel', '~> 4.0.0'
 gem 'json'
 gem 'configatron' 
- 
+gem 'hashie'
 

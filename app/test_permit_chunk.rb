@@ -1,4 +1,5 @@
-# permit_chunk.rb
+# test_permit_chunk.rb
+# For use with test data-set permit test set on Socrata 
 # This script is for bulk uploading permit data to Socrata. It is for starting a new Permit data-set or for when 
 # you need to push large (~10,000) records.
 # Run this script => ruby permit_chunk.rb followed by an integer representing the 1st permit id you want to upload.
@@ -20,8 +21,7 @@ require_relative '../lib/defaults.rb'
 require_relative '../lib/helpers.rb'
 
 
-DB = Sequel.oracle( :database => configatron.db, :host => configatron.host, :port => 1531, :user => configatron.user, :password => configatron.pass)
-
+DB = Sequel.oracle( :database => 'irisdev', :host => 'ucsdevrac1', :port => 1531, :user => configatron.user_dev, :password => configatron.pass_dev)
 class ConnectQuery
   
   DATE_FORMAT = '%m/%d/%Y'
@@ -38,15 +38,15 @@ class ConnectQuery
       }) 
     
     @db = db
-    @view_id = 'hk3n-ieai'   #permit data-set code for Socrata
+    @view_id = '3rng-pv3r'   #permit data-set code for Socrata
     @payload =[]
     @min=min                 #return permit info starting at permit number
-    @max=@min.to_i + 10000    #return permit info ending at permit number + 10,000
-
+    @max=@min.to_i + 1000    #return permit info ending at permit number + 10,000
+    @counter=0
   end
 
   def stepper              #get sql and start processing
-     LOGGER.info "Upload initiated permit numbers #{@min} - #{@max}"
+     LOGGER.info "Upload initiated permit numbers  #{@min} - #{@max}"
      @sql = get_sql(@min, @max)
      export
   end
@@ -110,6 +110,7 @@ class ConnectQuery
         package = h.merge!(temp_address)
         
         @payload << package 
+        @counter+=1
 
     end
       response = @client.post(@view_id, @payload)         #upload to Socrata
@@ -119,12 +120,11 @@ class ConnectQuery
       puts response["Rows Created"].to_s + ' Rows Created'
       puts response["Rows Updated"].to_s + ' Rows Updated'
 
-      LOGGER.info "Upload complete for permit numbers #{@min} - #{@max} using permit_chunk.rb"
+      LOGGER.info "Update complete using test_permit_chunk.rb"
       LOGGER.info "................. #{response["Errors"]} Errors"
       LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"
       LOGGER.info "................. #{response["Rows Created"]} Rows Created"
       LOGGER.info "................. #{response["Rows Updated"]} Rows Updated"
-
    end 
 end
  
