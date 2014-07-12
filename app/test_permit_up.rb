@@ -118,7 +118,7 @@ class UpdatePermit
       puts response["Rows Created"].to_s + ' Rows Created'
       puts response["Rows Updated"].to_s + ' Rows Updated'
       LOGGER.info "Update complete using test_permit_up.rb"
-      LOGGER.info "Update complete  #{response["Errors"]}  Errors"
+      LOGGER.info "................. #{response["Errors"]} Errors"
       LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"
       LOGGER.info "................. #{response["Rows Created"]} Rows Created"
       LOGGER.info "................. #{response["Rows Updated"]} Rows Updated"
