@@ -27,7 +27,7 @@ class UpdatePermit
 
   DATE_FORMAT = '%m/%d/%Y'
 
-  def initialize(db) 
+  def initialize(db,num_days) 
     @client = SODA::Client.new({
       :domain => 'data.raleighnc.gov',
       :app_token => configatron.app_token,
@@ -38,9 +38,10 @@ class UpdatePermit
       :ignore_ssl => true }) 
 
     @db = db
+    @num_days = num_days.to_i
     @view_id = 'hk3n-ieai'           #permit data-set code for Socrata
     @payload =[]
-    @date = (Date.today - 3.days).strftime(UpdatePermit::DATE_FORMAT)
+    @date = (Date.today - @num_days.days).strftime(UpdatePermit::DATE_FORMAT)
     @counter=0 
   end
 
@@ -114,7 +115,7 @@ class UpdatePermit
 
     end
 
-      response = @client.post(@view_id, @payload)
+    #  response = @client.post(@view_id, @payload)
 
       puts response["Errors"].to_s + 'Errors'
       puts response["Rows Deleted"].to_s + ' Rows Deleted'
@@ -128,6 +129,6 @@ class UpdatePermit
   end 
 end
  
-UpdatePermit.new(DB).process
+UpdatePermit.new(DB, ARGV[0]).process
 
 
