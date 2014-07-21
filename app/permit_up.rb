@@ -115,7 +115,7 @@ class UpdatePermit
 
     end
 
-    #  response = @client.post(@view_id, @payload)
+      response = @client.post(@view_id, @payload)
 
       puts response["Errors"].to_s + 'Errors'
       puts response["Rows Deleted"].to_s + ' Rows Deleted'
