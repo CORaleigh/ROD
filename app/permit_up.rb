@@ -79,7 +79,7 @@ class UpdatePermit
             :perm_cost_of_construction => :cost_of_construction,
             :grp_cnty_parc_owner_name => :owner_name,
             :perm_contractor_name => :contractor_name,
-            :rpid_lot => :rpid_lot,
+            :rpid_lot => :lot_number,
             :perm_c_bldg_co_date => :building_date,
             :perm_authorized_work => :authorized_work,
             :grp_b_num_dwel_units_total => :dwelling_units_total,
