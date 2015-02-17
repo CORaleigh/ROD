@@ -17,7 +17,7 @@ require_relative '../lib/defaults.rb'
 require_relative '../lib/helpers.rb'
  
  
-DB = Sequel.oracle( :database => 'irisdev', :host => 'ucsdevrac1',  :port => 1531, :user => configatron.user_dev, :password => configatron.pass_dev)
+DB = Sequel.oracle( :database => configatron.db, :host => configatron.host, :port => 1531, :user => configatron.user, :password => configatron.pass)
 
 
 class UpdatePermit
@@ -35,9 +35,10 @@ class UpdatePermit
       :ignore_ssl => true }) 
 
     @db = db
-    @view_id = '3rng-pv3r'           #permit data-set code for Socrata
+    #@view_id = '3rng-pv3r'           #permit data-set code for Socrata
+    @view_id = 'nii6-a7pg'            #working permit data set
     @payload =[]
-    @date = (Date.today - 100.days).strftime(UpdatePermit::DATE_FORMAT)
+    @date = (Date.today - 60.days).strftime(UpdatePermit::DATE_FORMAT)
     @counter=0 
   end
 
@@ -55,14 +56,12 @@ class UpdatePermit
         WHERE  ("PERM_GROUPS"."GRP_STATUS"='A' OR "PERM_GROUPS"."GRP_STATUS"='I' OR "PERM_GROUPS"."GRP_STATUS"='V' ) 
         AND "PERM_GROUPS"."GRP_ISSUE_DATE"  >= TO_DATE( '#{date}' , 'mm/dd/yyyy')
       SQL
-  end  
+  end   
   
   def transform 
- 
-   result_objects=@db[@sql].all 
-    
-   result_objects.each do |h|
-     
+
+    result_objects=@db[@sql].all    
+    result_objects.each do |h|
    ############rename keys to make human friendly
    h.rewrite(:devplan_devplan_name => :development_plan_name,
             :grp_issue_date  =>    :issue_date,
@@ -75,40 +74,128 @@ class UpdatePermit
             :perm_cost_of_construction => :cost_of_construction,
             :grp_cnty_parc_owner_name => :owner_name,
             :perm_contractor_name => :contractor_name,
-            :rpid_lot => :rpid_lot,
-            :perm_c_bldg_co_date => :building_date,
+            :contractor_id => :contractor_city_id,
+            :contractor_e_mail => :contractor_email,
+            :rpid_lot => :lot_number,
+            :perm_c_bldg_co_date => :building_co_date,
             :perm_authorized_work => :authorized_work,
-            :grp_b_num_dwel_units_total => :dwelling_units_total,
-            :census_land_use_code_descr => :land_use_code_description,
+            :grp_b_num_dwel_units_total => :dwelling_units_total, 
+            :grp_bldg_footprint => :building_footprint,
             :cnty_acct_num => :county_account_number,
             :grp_status => :status,
             :parc_county => :county,
             :in_out_city_limits_descr => :in_out_city_limits,
-            :landusecode_descr => :land_use_code
-             
+            :census_land_use_code_descr => :land_use_code_description,
+            :landusecode_descr => :land_use_code            
  )
 
 
     ##############set proper date_type
            h[:issue_date]=h[:issue_date].to_datetime
-              if !h[:building_date].nil? 
-                h[:building_date] =  h[:building_date].to_datetime
+              if !h[:building_co_date].nil? 
+                h[:building_co_date] =  h[:building_co_date].to_datetime
               end 
-              
-    ##############concatenate address fields to Location 1       
+    ##############concatenate owner address fields
+        @owner_add = ' '
+        if !h[:grp_cnty_parc_owner_addr1].nil?  
+          @owner_add = h[:grp_cnty_parc_owner_addr1]
+            if !h[:grp_cnty_parc_owner_addr2].nil?  && !h[:grp_cnty_parc_owner_addr2].include?( h[:grp_cnty_parc_owner_addr1])
+              @owner_add +=  ' ' + h[:grp_cnty_parc_owner_addr2]
+            end
+            o_address = {:owners_address => @owner_add}
+            package = h.merge!(o_address)
+        end
+    ##############concatenate address fields to Location 1 
+          if !h[:street_suite].nil?       #add suite to full address unless nil
+            @suite = 'STE' + ' ' + h[:street_suite].to_s + ' ' 
+          else
+            @suite = ''
+          end
+                                    
         temp_address = {:address =>(h[:street_num].to_s << ' ' << 
-                                               h[:dir_pre].to_s << ' ' << 
-                                               h[:street_name].to_s << ' ' << 
-                                               h[:street_type].to_s << ' ' << 
-                                               h[:dir_suf].to_s << ' ' << 
-                                               h[:city].to_s <<  " NC  " << 
-                                               h[:zip].to_s ).squeeze(' ')}
-      
+                                    h[:dir_pre].to_s << ' ' << 
+                                    h[:street_name].to_s << ' ' << 
+                                    h[:street_type].to_s << ' ' << 
+                                    h[:dir_suf].to_s << ' ' << 
+                                    @suite << ' ' <<
+                                    h[:city].to_s <<  " NC  " << 
+                                    h[:zip].to_s ).squeeze(' ')}
+     
         package = h.merge!(temp_address)
-        
-        @payload << package
+        print '.'
+        @payload << package 
+
+        @counter+=1    
+  def transform 
+
+    result_objects=@db[@sql].all    
+    result_objects.each do |h|
+   ############rename keys to make human friendly
+   h.rewrite(:devplan_devplan_name => :development_plan_name,
+            :grp_issue_date  =>    :issue_date,
+            :grp_proposed_work => :proposed_work,
+            :perm_work_type_code_descr => :work_type_description, 
+            :permit_num => :permit_number,
+            :perm_sq_ft_for_fee => :square_feet,
+            :grp_bldg_num_stories => :number_of_stories,
+            :ncpin => :nc_pin,
+            :perm_cost_of_construction => :cost_of_construction,
+            :grp_cnty_parc_owner_name => :owner_name,
+            :perm_contractor_name => :contractor_name,
+            :contractor_id => :contractor_city_id,
+            :contractor_e_mail => :contractor_email,
+            :rpid_lot => :lot_number,
+            :perm_c_bldg_co_date => :building_co_date,
+            :perm_authorized_work => :authorized_work,
+            :grp_b_num_dwel_units_total => :dwelling_units_total, 
+            :grp_bldg_footprint => :building_footprint,
+            :cnty_acct_num => :county_account_number,
+            :grp_status => :status,
+            :parc_county => :county,
+            :in_out_city_limits_descr => :in_out_city_limits,
+            :census_land_use_code_descr => :land_use_code_description,
+            :landusecode_descr => :land_use_code            
+ )
+
+
+    ##############set proper date_type
+           h[:issue_date]=h[:issue_date].to_datetime
+              if !h[:building_co_date].nil? 
+                h[:building_co_date] =  h[:building_co_date].to_datetime
+              end 
+    ##############concatenate owner address fields
+        @owner_add = ' '
+        if !h[:grp_cnty_parc_owner_addr1].nil?  
+          @owner_add = h[:grp_cnty_parc_owner_addr1]
+            if !h[:grp_cnty_parc_owner_addr2].nil?  && !h[:grp_cnty_parc_owner_addr2].include?( h[:grp_cnty_parc_owner_addr1])
+              @owner_add +=  ' ' + h[:grp_cnty_parc_owner_addr2]
+            end
+            o_address = {:owners_address => @owner_add}
+            package = h.merge!(o_address)
+        end
+    ##############concatenate address fields to Location 1 
+          if !h[:street_suite].nil?       #add suite to full address unless nil
+            @suite = 'STE' + ' ' + h[:street_suite].to_s + ' ' 
+          else
+            @suite = ''
+          end
+                                    
+        temp_address = {:address =>(h[:street_num].to_s << ' ' << 
+                                    h[:dir_pre].to_s << ' ' << 
+                                    h[:street_name].to_s << ' ' << 
+                                    h[:street_type].to_s << ' ' << 
+                                    h[:dir_suf].to_s << ' ' << 
+                                    @suite << ' ' <<
+                                    h[:city].to_s <<  " NC  " << 
+                                    h[:zip].to_s ).squeeze(' ')}
+     
+        package = h.merge!(temp_address)
+        print '.'
+        @payload << package 
+
         @counter+=1    
 
+    end
     end
 
       response = @client.post(@view_id, @payload)

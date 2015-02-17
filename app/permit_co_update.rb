@@ -1,5 +1,4 @@
 # permit_up.rb
-# !!!!!!!!!!!before running/deploying make sure @view id is set to proper data-set on socrata
 # This is for the automation of updating the City of Raleigh Building Permits data-set on Socrata.
 # All new permit data from the past two days will be uploaded to Socrata's open data portal for the city of Raleigh.
 # It should be run via a cron job on a daily basis.
@@ -24,11 +23,11 @@ require_relative '../lib/helpers.rb'
 DB = Sequel.oracle( :database => configatron.db, :host => configatron.host, :port => 1531, :user => configatron.user, :password => configatron.pass)
 
 
-class UpdatePermit
+class Permit_co_date  
 
   DATE_FORMAT = '%m/%d/%Y'
 
-  def initialize(db,num_days) 
+  def initialize(db) 
     @client = SODA::Client.new({
       :domain => 'data.raleighnc.gov',
       :app_token => configatron.app_token,
@@ -39,20 +38,34 @@ class UpdatePermit
       :ignore_ssl => true }) 
 
     @db = db
-    @num_days = num_days.to_i
-    #@view_id = 'hk3n-ieai'           #permit data-set code for Socrata
-    @view_id = 'nii6-a7pg'            #working permit data set
+ 
+    @view_id = 'hk3n-ieai'           #permit data-set code for Socrata
+    #@view_id = 'nii6-a7pg'            #working permit data set
     @payload =[]
-    @date = (Date.today - @num_days.days).strftime(UpdatePermit::DATE_FORMAT)
+     
     @counter=0 
   end
 
   def process 
-    LOGGER.info "Update initiated. Start date #{@date}"
-    puts "start date: #{@date}"
-    @sql = get_sql_by_date(@date)
-    transform
+    LOGGER.info "Update for building CO date initiated."
+    get_co #get permit co dates from existing set on socrata
+     
+
+    #transform
   end
+  
+  
+  def get_co
+
+     
+
+      #response = @client.get(@view_id, {  :building_date  =>  nil?})
+response = @client.get(@view_id,  ( $where = '$building_date'  = " " ))
+puts response[2]
+puts response
+puts "......."
+  end
+
 
   def get_sql_by_date(date)
       <<-SQL 
@@ -134,7 +147,7 @@ class UpdatePermit
 
     end
 
-      response = @client.post(@view_id, @payload)
+   #   response = @client.post(@view_id, @payload)
 
       puts response["Errors"].to_s + 'Errors'
       puts response["Rows Deleted"].to_s + ' Rows Deleted'
@@ -148,6 +161,6 @@ class UpdatePermit
   end 
 end
  
-UpdatePermit.new(DB, ARGV[0]).process
+Permit_co_date.new(DB).process
 
 

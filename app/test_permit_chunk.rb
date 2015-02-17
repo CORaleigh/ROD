@@ -101,11 +101,11 @@ class ConnectQuery
                 h[:building_co_date] =  h[:building_co_date].to_datetime
               end 
     ##############concatenate owner address fields
-        @owner_add = ''
-        unless h[:grp_cnty_parc_owner_addr1].nil?  
+        @owner_add = ' '
+        if !h[:grp_cnty_parc_owner_addr1].nil?  
           @owner_add = h[:grp_cnty_parc_owner_addr1]
-            if !h[:grp_cnty_parc_owner_addr2].nil?  || h[:grp_cnty_parc_owner_addr1].include?( h[:grp_cnty_parc_owner_addr1])
-              @owner_add = @owner_add + ' ' + h[:grp_cnty_parc_owner_addr2]
+            if !h[:grp_cnty_parc_owner_addr2].nil?  && !h[:grp_cnty_parc_owner_addr2].include?( h[:grp_cnty_parc_owner_addr1])
+              @owner_add +=  ' ' + h[:grp_cnty_parc_owner_addr2]
             end
             o_address = {:owners_address => @owner_add}
             package = h.merge!(o_address)

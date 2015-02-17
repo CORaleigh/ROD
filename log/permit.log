@@ -48,3 +48,258 @@ I, [2015-02-12T19:27:25.239895 #781]  INFO -- : ................. 26 Errors
 I, [2015-02-12T19:27:25.240638 #781]  INFO -- : ................. 0 Rows Deleted
 I, [2015-02-12T19:27:25.240667 #781]  INFO -- : ................. 0 Rows Created
 I, [2015-02-12T19:27:25.240688 #781]  INFO -- : ................. 7192 Rows Updated
+I, [2015-02-13T10:52:58.021296 #909]  INFO -- : Upload initiated permit numbers 13000 - 13100
+I, [2015-02-13T10:53:06.966878 #909]  INFO -- : Upload complete for permit numbers 13000 - 13100 using permit_chunk.rb
+I, [2015-02-13T10:53:06.966950 #909]  INFO -- : ................. 0 Errors
+I, [2015-02-13T10:53:06.966977 #909]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-13T10:53:06.967001 #909]  INFO -- : ................. 75 Rows Created
+I, [2015-02-13T10:53:06.967020 #909]  INFO -- : ................. 1 Rows Updated
+I, [2015-02-13T10:54:46.411012 #911]  INFO -- : Upload initiated permit numbers 13100 - 13200
+I, [2015-02-13T10:54:51.315595 #911]  INFO -- : Upload complete for permit numbers 13100 - 13200 using permit_chunk.rb
+I, [2015-02-13T10:54:51.315696 #911]  INFO -- : ................. 0 Errors
+I, [2015-02-13T10:54:51.315722 #911]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-13T10:54:51.315759 #911]  INFO -- : ................. 91 Rows Created
+I, [2015-02-13T10:54:51.315780 #911]  INFO -- : ................. 1 Rows Updated
+I, [2015-02-13T10:55:31.083573 #913]  INFO -- : Upload initiated permit numbers 13100 - 13200
+I, [2015-02-13T10:55:34.220912 #913]  INFO -- : Upload complete for permit numbers 13100 - 13200 using permit_chunk.rb
+I, [2015-02-13T10:55:34.220983 #913]  INFO -- : ................. 0 Errors
+I, [2015-02-13T10:55:34.221009 #913]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-13T10:55:34.221045 #913]  INFO -- : ................. 0 Rows Created
+I, [2015-02-13T10:55:34.221066 #913]  INFO -- : ................. 92 Rows Updated
+I, [2015-02-13T12:02:49.638430 #923]  INFO -- : Update initiated. Start date: '02/03/2015'
+I, [2015-02-13T12:02:52.782751 #923]  INFO -- : Update complete using test_permit_up.rb
+I, [2015-02-13T12:02:52.782836 #923]  INFO -- : ................. 0 Errors
+I, [2015-02-13T12:02:52.782870 #923]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-13T12:02:52.782895 #923]  INFO -- : ................. 0 Rows Created
+I, [2015-02-13T12:02:52.782919 #923]  INFO -- : ................. 0 Rows Updated
+I, [2015-02-13T12:04:19.086188 #925]  INFO -- : Update initiated. Start date: '11/05/2014'
+I, [2015-02-13T12:04:22.106463 #925]  INFO -- : Update complete using test_permit_up.rb
+I, [2015-02-13T12:04:22.106536 #925]  INFO -- : ................. 0 Errors
+I, [2015-02-13T12:04:22.106562 #925]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-13T12:04:22.106583 #925]  INFO -- : ................. 0 Rows Created
+I, [2015-02-13T12:04:22.106606 #925]  INFO -- : ................. 0 Rows Updated
+I, [2015-02-13T12:04:40.224735 #927]  INFO -- : Update initiated. Start date: '05/19/2012'
+I, [2015-02-13T12:13:22.131957 #930]  INFO -- : Update initiated. Start date: '02/13/2014'
+I, [2015-02-13T14:40:33.753110 #1100]  INFO -- : Update initiated. Start date: '12/15/2014'
+I, [2015-02-13T14:41:02.200115 #1100]  INFO -- : Update complete using test_permit_up.rb
+I, [2015-02-13T14:41:02.200188 #1100]  INFO -- : ................. 6 Errors
+I, [2015-02-13T14:41:02.200214 #1100]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-13T14:41:02.200234 #1100]  INFO -- : ................. 883 Rows Created
+I, [2015-02-13T14:41:02.200253 #1100]  INFO -- : ................. 0 Rows Updated
+I, [2015-02-13T15:46:22.766164 #1113]  INFO -- : Update initiated. Start date: '12/15/2014'
+I, [2015-02-13T15:57:34.190578 #1122]  INFO -- : Update initiated. Start date 02/10/2015
+I, [2015-02-13T15:57:37.060936 #1122]  INFO -- : Update complete using permit_up.rb
+I, [2015-02-13T15:57:37.061009 #1122]  INFO -- : ................. 1 Errors
+I, [2015-02-13T15:57:37.061036 #1122]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-13T15:57:37.061057 #1122]  INFO -- : ................. 5 Rows Created
+I, [2015-02-13T15:57:37.061076 #1122]  INFO -- : ................. 76 Rows Updated
+I, [2015-02-13T16:31:07.083141 #1129]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T16:32:22.445527 #1131]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T16:34:38.180323 #1134]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T16:35:05.269933 #1136]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T16:35:22.006538 #1139]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T16:36:11.719718 #1140]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T17:01:44.286548 #1148]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T17:03:37.429802 #1151]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T17:10:43.719892 #1154]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T17:11:05.923873 #1156]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T18:00:58.935691 #1168]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T18:01:12.963523 #1169]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T18:10:26.566101 #1173]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T18:11:19.533497 #1176]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T18:11:47.845720 #1178]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T18:14:43.886107 #1180]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T18:20:18.742998 #1184]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T18:20:41.362917 #1186]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T18:21:17.705659 #1188]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T18:21:42.300960 #1190]  INFO -- : Update for building CO date initiated.
+I, [2015-02-13T18:21:54.683226 #1192]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T10:41:57.911396 #2059]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T10:43:09.106945 #2060]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T10:43:45.575623 #2063]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T10:44:20.124931 #2065]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T11:04:19.173659 #2071]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T11:05:05.244123 #2073]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T11:17:25.620498 #2078]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T11:58:34.262755 #2086]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T11:59:03.231232 #2087]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T12:00:41.549426 #2090]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T12:01:47.913292 #2093]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T12:03:40.504786 #2094]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T15:26:05.796998 #2223]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T15:28:29.941874 #2226]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T15:28:53.706924 #2227]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T15:29:18.808616 #2228]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T15:29:38.163065 #2229]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T15:30:11.553336 #2231]  INFO -- : Update for building CO date initiated.
+I, [2015-02-16T16:31:17.833272 #2253]  INFO -- : Upload initiated permit numbers 1 - 11
+I, [2015-02-16T16:31:25.309132 #2253]  INFO -- : Upload complete for permit numbers 1 - 11 using permit_chunk.rb
+I, [2015-02-16T16:31:25.309208 #2253]  INFO -- : ................. 0 Errors
+I, [2015-02-16T16:31:25.309234 #2253]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T16:31:25.309255 #2253]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T16:31:25.309274 #2253]  INFO -- : ................. 4 Rows Updated
+I, [2015-02-16T16:33:48.368679 #2261]  INFO -- : Upload initiated permit numbers 10 - 20
+I, [2015-02-16T16:33:58.397844 #2261]  INFO -- : Upload complete for permit numbers 10 - 20 using permit_chunk.rb
+I, [2015-02-16T16:33:58.397944 #2261]  INFO -- : ................. 0 Errors
+I, [2015-02-16T16:33:58.397986 #2261]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T16:33:58.398017 #2261]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T16:33:58.398037 #2261]  INFO -- : ................. 7 Rows Updated
+I, [2015-02-16T16:41:20.348228 #2268]  INFO -- : Upload initiated permit numbers 0 - 5000
+I, [2015-02-16T16:42:07.731417 #2268]  INFO -- : Upload complete for permit numbers 0 - 5000 using permit_chunk.rb
+I, [2015-02-16T16:42:07.731488 #2268]  INFO -- : ................. 32 Errors
+I, [2015-02-16T16:42:07.731515 #2268]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T16:42:07.731536 #2268]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T16:42:07.731554 #2268]  INFO -- : ................. 3328 Rows Updated
+I, [2015-02-16T16:46:03.391796 #2270]  INFO -- : Upload initiated permit numbers 5000 - 10000
+I, [2015-02-16T16:46:43.335757 #2270]  INFO -- : Upload complete for permit numbers 5000 - 10000 using permit_chunk.rb
+I, [2015-02-16T16:46:43.335830 #2270]  INFO -- : ................. 9 Errors
+I, [2015-02-16T16:46:43.335856 #2270]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T16:46:43.335876 #2270]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T16:46:43.335895 #2270]  INFO -- : ................. 3705 Rows Updated
+I, [2015-02-16T16:47:13.874060 #2272]  INFO -- : Upload initiated permit numbers 10000 - 15000
+I, [2015-02-16T16:47:52.252076 #2272]  INFO -- : Upload complete for permit numbers 10000 - 15000 using permit_chunk.rb
+I, [2015-02-16T16:47:52.252149 #2272]  INFO -- : ................. 13 Errors
+I, [2015-02-16T16:47:52.252176 #2272]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T16:47:52.252198 #2272]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T16:47:52.252219 #2272]  INFO -- : ................. 3577 Rows Updated
+I, [2015-02-16T16:49:02.388417 #2274]  INFO -- : Upload initiated permit numbers 15000 - 20000
+I, [2015-02-16T16:49:38.955692 #2274]  INFO -- : Upload complete for permit numbers 15000 - 20000 using permit_chunk.rb
+I, [2015-02-16T16:49:38.955764 #2274]  INFO -- : ................. 69 Errors
+I, [2015-02-16T16:49:38.955791 #2274]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T16:49:38.955811 #2274]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T16:49:38.955830 #2274]  INFO -- : ................. 3612 Rows Updated
+I, [2015-02-16T16:50:05.365595 #2276]  INFO -- : Upload initiated permit numbers 20000 - 25000
+I, [2015-02-16T16:50:47.153621 #2276]  INFO -- : Upload complete for permit numbers 20000 - 25000 using permit_chunk.rb
+I, [2015-02-16T16:50:47.153694 #2276]  INFO -- : ................. 90 Errors
+I, [2015-02-16T16:50:47.153722 #2276]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T16:50:47.153742 #2276]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T16:50:47.153762 #2276]  INFO -- : ................. 3815 Rows Updated
+I, [2015-02-16T16:51:24.699570 #2278]  INFO -- : Upload initiated permit numbers 25000 - 30000
+I, [2015-02-16T16:54:15.020346 #2280]  INFO -- : Upload initiated permit numbers 25000 - 30000
+I, [2015-02-16T16:54:50.891731 #2280]  INFO -- : Upload complete for permit numbers 25000 - 30000 using permit_chunk.rb
+I, [2015-02-16T16:54:50.891805 #2280]  INFO -- : ................. 7 Errors
+I, [2015-02-16T16:54:50.891832 #2280]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T16:54:50.891854 #2280]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T16:54:50.891873 #2280]  INFO -- : ................. 3760 Rows Updated
+I, [2015-02-16T16:55:10.528042 #2282]  INFO -- : Upload initiated permit numbers 30000 - 35000
+I, [2015-02-16T16:55:44.219658 #2282]  INFO -- : Upload complete for permit numbers 30000 - 35000 using permit_chunk.rb
+I, [2015-02-16T16:55:44.219732 #2282]  INFO -- : ................. 36 Errors
+I, [2015-02-16T16:55:44.219759 #2282]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T16:55:44.219800 #2282]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T16:55:44.219824 #2282]  INFO -- : ................. 3581 Rows Updated
+I, [2015-02-16T16:56:00.086866 #2284]  INFO -- : Upload initiated permit numbers 35000 - 40000
+I, [2015-02-16T16:56:36.854360 #2284]  INFO -- : Upload complete for permit numbers 35000 - 40000 using permit_chunk.rb
+I, [2015-02-16T16:56:36.854432 #2284]  INFO -- : ................. 14 Errors
+I, [2015-02-16T16:56:36.854458 #2284]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T16:56:36.854479 #2284]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T16:56:36.854498 #2284]  INFO -- : ................. 3881 Rows Updated
+I, [2015-02-16T16:57:03.068337 #2286]  INFO -- : Upload initiated permit numbers 40000 - 45000
+I, [2015-02-16T20:54:02.612114 #2329]  INFO -- : Upload initiated permit numbers 40000 - 45000
+I, [2015-02-16T20:54:52.033163 #2329]  INFO -- : Upload complete for permit numbers 40000 - 45000 using permit_chunk.rb
+I, [2015-02-16T20:54:52.033236 #2329]  INFO -- : ................. 48 Errors
+I, [2015-02-16T20:54:52.033264 #2329]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T20:54:52.033286 #2329]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T20:54:52.033307 #2329]  INFO -- : ................. 3791 Rows Updated
+I, [2015-02-16T20:55:36.259375 #2332]  INFO -- : Upload initiated permit numbers 45000 - 50000
+I, [2015-02-16T20:56:08.529022 #2332]  INFO -- : Upload complete for permit numbers 45000 - 50000 using permit_chunk.rb
+I, [2015-02-16T20:56:08.529097 #2332]  INFO -- : ................. 44 Errors
+I, [2015-02-16T20:56:08.529123 #2332]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T20:56:08.529143 #2332]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T20:56:08.529162 #2332]  INFO -- : ................. 3714 Rows Updated
+I, [2015-02-16T20:56:44.469954 #2334]  INFO -- : Upload initiated permit numbers 50000 - 55000
+I, [2015-02-16T20:57:32.496317 #2334]  INFO -- : Upload complete for permit numbers 50000 - 55000 using permit_chunk.rb
+I, [2015-02-16T20:57:32.496394 #2334]  INFO -- : ................. 27 Errors
+I, [2015-02-16T20:57:32.496438 #2334]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T20:57:32.496476 #2334]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T20:57:32.496506 #2334]  INFO -- : ................. 3665 Rows Updated
+I, [2015-02-16T20:58:40.387486 #2336]  INFO -- : Upload initiated permit numbers 55000 - 60000
+I, [2015-02-16T20:59:39.474584 #2336]  INFO -- : Upload complete for permit numbers 55000 - 60000 using permit_chunk.rb
+I, [2015-02-16T20:59:39.474652 #2336]  INFO -- : ................. 10 Errors
+I, [2015-02-16T20:59:39.474678 #2336]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T20:59:39.474699 #2336]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T20:59:39.474718 #2336]  INFO -- : ................. 3557 Rows Updated
+I, [2015-02-16T21:00:23.834664 #2338]  INFO -- : Upload initiated permit numbers 60000 - 65000
+I, [2015-02-16T21:01:16.071094 #2338]  INFO -- : Upload complete for permit numbers 60000 - 65000 using permit_chunk.rb
+I, [2015-02-16T21:01:16.071166 #2338]  INFO -- : ................. 16 Errors
+I, [2015-02-16T21:01:16.071193 #2338]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:01:16.071214 #2338]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T21:01:16.071234 #2338]  INFO -- : ................. 3500 Rows Updated
+I, [2015-02-16T21:03:02.355693 #2344]  INFO -- : Upload initiated permit numbers 65000 - 70000
+I, [2015-02-16T21:03:46.671559 #2344]  INFO -- : Upload complete for permit numbers 65000 - 70000 using permit_chunk.rb
+I, [2015-02-16T21:03:46.671644 #2344]  INFO -- : ................. 17 Errors
+I, [2015-02-16T21:03:46.671679 #2344]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:03:46.671705 #2344]  INFO -- : ................. 2 Rows Created
+I, [2015-02-16T21:03:46.671729 #2344]  INFO -- : ................. 3469 Rows Updated
+I, [2015-02-16T21:05:43.407485 #2346]  INFO -- : Upload initiated permit numbers 70000 - 75000
+I, [2015-02-16T21:06:46.900115 #2346]  INFO -- : Upload complete for permit numbers 70000 - 75000 using permit_chunk.rb
+I, [2015-02-16T21:06:46.900186 #2346]  INFO -- : ................. 21 Errors
+I, [2015-02-16T21:06:46.900213 #2346]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:06:46.900235 #2346]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T21:06:46.900254 #2346]  INFO -- : ................. 3359 Rows Updated
+I, [2015-02-16T21:07:17.271789 #2348]  INFO -- : Upload initiated permit numbers 75000 - 80000
+I, [2015-02-16T21:08:28.071287 #2348]  INFO -- : Upload complete for permit numbers 75000 - 80000 using permit_chunk.rb
+I, [2015-02-16T21:08:28.071359 #2348]  INFO -- : ................. 19 Errors
+I, [2015-02-16T21:08:28.071389 #2348]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:08:28.071422 #2348]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T21:08:28.071443 #2348]  INFO -- : ................. 3454 Rows Updated
+I, [2015-02-16T21:09:27.889772 #2350]  INFO -- : Upload initiated permit numbers 80000 - 85000
+I, [2015-02-16T21:10:10.471637 #2350]  INFO -- : Upload complete for permit numbers 80000 - 85000 using permit_chunk.rb
+I, [2015-02-16T21:10:10.471709 #2350]  INFO -- : ................. 12 Errors
+I, [2015-02-16T21:10:10.471736 #2350]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:10:10.471756 #2350]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T21:10:10.471774 #2350]  INFO -- : ................. 3554 Rows Updated
+I, [2015-02-16T21:11:02.277976 #2352]  INFO -- : Upload initiated permit numbers 85000 - 90000
+I, [2015-02-16T21:11:53.179150 #2352]  INFO -- : Upload complete for permit numbers 85000 - 90000 using permit_chunk.rb
+I, [2015-02-16T21:11:53.179223 #2352]  INFO -- : ................. 8 Errors
+I, [2015-02-16T21:11:53.179251 #2352]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:11:53.179272 #2352]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T21:11:53.179291 #2352]  INFO -- : ................. 3476 Rows Updated
+I, [2015-02-16T21:12:52.881411 #2354]  INFO -- : Upload initiated permit numbers 85000 - 90000
+I, [2015-02-16T21:13:45.607658 #2354]  INFO -- : Upload complete for permit numbers 85000 - 90000 using permit_chunk.rb
+I, [2015-02-16T21:13:45.607765 #2354]  INFO -- : ................. 8 Errors
+I, [2015-02-16T21:13:45.607794 #2354]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:13:45.607815 #2354]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T21:13:45.607834 #2354]  INFO -- : ................. 3476 Rows Updated
+I, [2015-02-16T21:14:18.786494 #2356]  INFO -- : Upload initiated permit numbers 90000 - 95000
+I, [2015-02-16T21:15:07.334907 #2356]  INFO -- : Upload complete for permit numbers 90000 - 95000 using permit_chunk.rb
+I, [2015-02-16T21:15:07.334992 #2356]  INFO -- : ................. 17 Errors
+I, [2015-02-16T21:15:07.335019 #2356]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:15:07.335041 #2356]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T21:15:07.335060 #2356]  INFO -- : ................. 3431 Rows Updated
+I, [2015-02-16T21:16:07.208186 #2358]  INFO -- : Upload initiated permit numbers 95000 - 100000
+I, [2015-02-16T21:17:00.384716 #2358]  INFO -- : Upload complete for permit numbers 95000 - 100000 using permit_chunk.rb
+I, [2015-02-16T21:17:00.384788 #2358]  INFO -- : ................. 28 Errors
+I, [2015-02-16T21:17:00.384816 #2358]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:17:00.384837 #2358]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T21:17:00.384857 #2358]  INFO -- : ................. 3439 Rows Updated
+I, [2015-02-16T21:18:52.408198 #2360]  INFO -- : Upload initiated permit numbers 100000 - 105000
+I, [2015-02-16T21:19:42.690557 #2360]  INFO -- : Upload complete for permit numbers 100000 - 105000 using permit_chunk.rb
+I, [2015-02-16T21:19:42.690630 #2360]  INFO -- : ................. 23 Errors
+I, [2015-02-16T21:19:42.690656 #2360]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:19:42.690699 #2360]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T21:19:42.690722 #2360]  INFO -- : ................. 3679 Rows Updated
+I, [2015-02-16T21:20:31.728371 #2362]  INFO -- : Upload initiated permit numbers 105000 - 110000
+I, [2015-02-16T21:22:14.824727 #2364]  INFO -- : Upload initiated permit numbers 105000 - 110000
+I, [2015-02-16T21:23:02.578733 #2364]  INFO -- : Upload complete for permit numbers 105000 - 110000 using permit_chunk.rb
+I, [2015-02-16T21:23:02.578807 #2364]  INFO -- : ................. 11 Errors
+I, [2015-02-16T21:23:02.578834 #2364]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:23:02.578855 #2364]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T21:23:02.578874 #2364]  INFO -- : ................. 3719 Rows Updated
+I, [2015-02-16T21:25:24.298086 #2366]  INFO -- : Upload initiated permit numbers 110000 - 115000
+I, [2015-02-16T21:26:24.106901 #2366]  INFO -- : Upload complete for permit numbers 110000 - 115000 using permit_chunk.rb
+I, [2015-02-16T21:26:24.106984 #2366]  INFO -- : ................. 16 Errors
+I, [2015-02-16T21:26:24.107017 #2366]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:26:24.107043 #2366]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T21:26:24.107067 #2366]  INFO -- : ................. 3617 Rows Updated
+I, [2015-02-16T21:28:47.484367 #2368]  INFO -- : Upload initiated permit numbers 115000 - 120000
+I, [2015-02-16T21:29:41.229076 #2368]  INFO -- : Upload complete for permit numbers 115000 - 120000 using permit_chunk.rb
+I, [2015-02-16T21:29:41.229148 #2368]  INFO -- : ................. 17 Errors
+I, [2015-02-16T21:29:41.229177 #2368]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:29:41.229199 #2368]  INFO -- : ................. 23 Rows Created
+I, [2015-02-16T21:29:41.229219 #2368]  INFO -- : ................. 3294 Rows Updated
+I, [2015-02-16T21:30:21.963606 #2371]  INFO -- : Upload initiated permit numbers 120000 - 125000
+I, [2015-02-16T21:30:24.749045 #2371]  INFO -- : Upload complete for permit numbers 120000 - 125000 using permit_chunk.rb
+I, [2015-02-16T21:30:24.749129 #2371]  INFO -- : ................. 0 Errors
+I, [2015-02-16T21:30:24.749161 #2371]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-16T21:30:24.749185 #2371]  INFO -- : ................. 0 Rows Created
+I, [2015-02-16T21:30:24.749207 #2371]  INFO -- : ................. 0 Rows Updated

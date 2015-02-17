@@ -1,4 +1,6 @@
+
 # permit_chunk.rb
+# !!!!!!!!!!!before running/deploying make sure @view id is set to proper data-set on socrata
 # This script is for bulk uploading permit data to Socrata. It is for starting a new Permit data-set or for when
 # you need to push large (~10,000) records.
 # Run this script => ruby permit_chunk.rb followed by an integer representing the 1st permit id you want to upload.
@@ -39,10 +41,10 @@ class ConnectQuery
 
     @db = db
     #@view_id = 'hk3n-ieai'   #permit data-set code for Socrata
-    @view_id = 'nii6-a7pg' #permit test working copy
+    #@view_id = 'j7ar-vjr5' #permit test working copy
     @payload =[]
     @min=min                 #return permit info starting at permit number
-    @max=@min.to_i + 10000    #return permit info ending at permit number + 10,000
+    @max=@min.to_i + 5000    #return permit info ending at permit number + 10,000
 
   end
 
@@ -127,12 +129,12 @@ class ConnectQuery
                                     h[:zip].to_s ).squeeze(' ')}
      
         package = h.merge!(temp_address)
-        
+        print '.'
         @payload << package 
 
     end
       response = @client.post(@view_id, @payload)         #upload to Socrata
-
+      puts
       puts response["Errors"].to_s + ' Errors'
       puts response["Rows Deleted"].to_s + ' Rows Deleted'
       puts response["Rows Created"].to_s + ' Rows Created'
