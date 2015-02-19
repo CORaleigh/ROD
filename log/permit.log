@@ -303,3 +303,34 @@ I, [2015-02-16T21:30:24.749129 #2371]  INFO -- : ................. 0 Errors
 I, [2015-02-16T21:30:24.749161 #2371]  INFO -- : ................. 0 Rows Deleted
 I, [2015-02-16T21:30:24.749185 #2371]  INFO -- : ................. 0 Rows Created
 I, [2015-02-16T21:30:24.749207 #2371]  INFO -- : ................. 0 Rows Updated
+I, [2015-02-19T15:36:31.031869 #3261]  INFO -- : Update initiated. Start date 02/09/2015
+I, [2015-02-19T15:37:18.958987 #3269]  INFO -- : Update initiated. Start date 02/09/2015
+I, [2015-02-19T16:01:37.570472 #3494]  INFO -- : Upload initiated permit numbers  - 50
+I, [2015-02-19T16:03:28.706714 #3500]  INFO -- : Upload initiated permit numbers  - 50
+I, [2015-02-19T16:05:30.959263 #3505]  INFO -- : Upload initiated permit numbers  - 50
+I, [2015-02-19T16:17:14.552189 #3506]  INFO -- : Upload initiated permit numbers  - 50
+I, [2015-02-19T16:18:28.217794 #3507]  INFO -- : Upload initiated permit numbers  - 50
+I, [2015-02-19T16:19:47.338725 #3508]  INFO -- : Upload initiated permit numbers 1 - 51
+I, [2015-02-19T16:20:04.838181 #3508]  INFO -- : Upload complete for permit numbers 1 - 51 using permit_chunk.rb
+I, [2015-02-19T16:20:04.838253 #3508]  INFO -- : ................. 0 Errors
+I, [2015-02-19T16:20:04.838281 #3508]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-19T16:20:04.838302 #3508]  INFO -- : ................. 0 Rows Created
+I, [2015-02-19T16:20:04.838322 #3508]  INFO -- : ................. 27 Rows Updated
+I, [2015-02-19T17:11:50.060044 #3527]  INFO -- : Update initiated. Start date 02/17/2015
+I, [2015-02-19T17:12:12.468636 #3527]  INFO -- : Update complete using permit_up.rb
+I, [2015-02-19T17:12:12.468722 #3527]  INFO -- : ................. 0 Errors
+I, [2015-02-19T17:12:12.468757 #3527]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-19T17:12:12.468784 #3527]  INFO -- : ................. 34 Rows Created
+I, [2015-02-19T17:12:12.468810 #3527]  INFO -- : ................. 0 Rows Updated
+I, [2015-02-19T17:16:22.651186 #3529]  INFO -- : Update initiated. Start date 02/09/2015
+I, [2015-02-19T17:16:49.072830 #3529]  INFO -- : Update complete using permit_up.rb
+I, [2015-02-19T17:16:49.072901 #3529]  INFO -- : ................. 1 Errors
+I, [2015-02-19T17:16:49.072927 #3529]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-19T17:16:49.072947 #3529]  INFO -- : ................. 24 Rows Created
+I, [2015-02-19T17:16:49.072966 #3529]  INFO -- : ................. 127 Rows Updated
+I, [2015-02-19T17:24:55.569022 #3531]  INFO -- : Update initiated. Start date 02/09/2015
+I, [2015-02-19T17:25:47.193442 #3531]  INFO -- : Update complete using permit_up.rb
+I, [2015-02-19T17:25:47.193514 #3531]  INFO -- : ................. 1 Errors
+I, [2015-02-19T17:25:47.193541 #3531]  INFO -- : ................. 0 Rows Deleted
+I, [2015-02-19T17:25:47.193563 #3531]  INFO -- : ................. 34 Rows Created
+I, [2015-02-19T17:25:47.193583 #3531]  INFO -- : ................. 117 Rows Updated

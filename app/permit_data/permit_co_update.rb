@@ -1,8 +1,4 @@
-# permit_up.rb
-# This is for the automation of updating the City of Raleigh Building Permits data-set on Socrata.
-# All new permit data from the past two days will be uploaded to Socrata's open data portal for the city of Raleigh.
-# It should be run via a cron job on a daily basis.
-# To run manually: ruby permit_up.rb from this files directory.
+ 
 
 
 
@@ -15,9 +11,9 @@ require 'soda/client'
 require 'configatron'      #configatron for private usernames, passwords ...
 require 'date'
 require 'active_support/time'
-require_relative '../lib/logger.rb'
-require_relative '../lib/defaults.rb'
-require_relative '../lib/helpers.rb'
+require_relative '../../lib/logger.rb'
+require_relative '../../lib/defaults.rb'
+require_relative '../../lib/helpers.rb'
  
  
 DB = Sequel.oracle( :database => configatron.db, :host => configatron.host, :port => 1531, :user => configatron.user, :password => configatron.pass)
@@ -39,7 +35,7 @@ class Permit_co_date
 
     @db = db
  
-    @view_id = 'hk3n-ieai'           #permit data-set code for Socrata
+    #@view_id = 'hk3n-ieai'           #permit data-set code for Socrata
     #@view_id = 'nii6-a7pg'            #working permit data set
     @payload =[]
      
