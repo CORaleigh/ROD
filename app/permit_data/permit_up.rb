@@ -40,8 +40,7 @@ class UpdatePermit
 
     @db = db
     @num_days = num_days.to_i
-    #@view_id = 'hk3n-ieai'           #permit data-set code for Socrata
-    @view_id = 'j7ar-vjr5'            #working permit data set
+    @view_id = 'hk3n-ieai'           #permit data-set code for Socrata
     @payload =[]
     @date = (Date.today - @num_days.days).strftime(UpdatePermit::DATE_FORMAT)
     @counter=0 

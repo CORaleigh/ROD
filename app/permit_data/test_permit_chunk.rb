@@ -38,7 +38,7 @@ class ConnectQuery
       }) 
     
     @db = db
-    @view_id = 'j7ar-vjr5' #permit test working copy
+    @view_id = '3rng-pv3r' #permit test working copy
     @payload =[]
     @min=min                 #return permit info starting at permit number
     @max=@min.to_i + 50 #return permit info ending at permit number + 10,000
