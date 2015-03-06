@@ -16,7 +16,7 @@ require 'soda/client'
 require 'configatron'      #configatron for private usernames, passwords ...
 require 'date'
 require 'active_support/time'
-require_relative '../../lib/logger.rb'
+require_relative '../../lib/permit_logger.rb'
 require_relative '../../lib/defaults.rb'
 require_relative '../../lib/helpers.rb'
  
@@ -130,7 +130,6 @@ class UpdatePermit
         @payload << package 
 
         @counter+=1    
-
     end
 
       response = @client.post(@view_id, @payload)
