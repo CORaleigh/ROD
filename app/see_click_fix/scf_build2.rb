@@ -29,8 +29,8 @@ class Maker
      :ignore_ssl => true
      })
    
-  @view_id = 'ckqf-irpp'   #socrata view id - working set
-  #@view_id = ''           #socrata view id - published set
+  #@view_id = ''   #socrata view id - working set
+  @view_id = 'q2m6-qdsj'           #socrata view id - published set
   @date = Date.today - 30  #set to get all issues from last 30 days
   @payload=[]
  end
