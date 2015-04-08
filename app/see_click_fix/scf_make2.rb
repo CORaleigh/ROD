@@ -31,17 +31,17 @@ class Maker
      :mime_type => 'JSON',
      :ignore_ssl => true
      })
-  @not_maintained_response = "This location is not maintained by the City of Raleigh"
-  @view_id = '6xju-znn5'   #socrata view id 
-  @date = "2013-06-25T01:00:00-04:00"
+  @not_maintained_response = "This location is not maintained by the City of Raleigh" #string for out of jurisdiction flag (OOJ Flag)
+  @view_id = 'jdqx-7xkr'   #socrata view id 
+  #@date = "2013-06-25T01:00:00-04:00"
   @container=[]
   @payload=[]
-  @page = 179
-  @pass = 4
+  @page = 1
+  @pass = 1
  end
 
- def see_click_new #get all issues by status open, closed, acknowledged, archived
-  600.times do 
+ def see_click_new #get all issues by status open, closed, acknowledged, archived - start date = @date
+  10.times do 
     @payload.clear  
       case @pass
         when 1
@@ -50,8 +50,8 @@ class Maker
           @results=HTTParty.get("https://seeclickfix.com/api/v2/issues.json?place_url=raleigh&status=closed&after=2013-06-25T01:00:00-04:00&page=1&per_page=1000")
         when 3
           @results=HTTParty.get("https://seeclickfix.com/api/v2/issues.json?place_url=raleigh&status=acknowledged&after=2013-06-25T01:00:00-04:00&page=1&per_page=1000")
-        when 4..604
-          @results=HTTParty.get("https://seeclickfix.com/api/v2/issues.json?place_url=raleigh&status=archived&after=2013-06-25T01:00:00-04:00&page=#{@page}&per_page=10")
+        when 4..10
+          @results=HTTParty.get("https://seeclickfix.com/api/v2/issues.json?place_url=raleigh&status=archived&after=2013-06-25T01:00:00-04:00&page=#{@page}&per_page=1000")
           @page+=1
       end
     print 'page # '
@@ -66,7 +66,6 @@ class Maker
 
   def transform #parse, rename, merge, remove objets 
     @results['issues'].each do |object|
-     begin
       #rename keys
       object.rewrite( "status" => "Status",
                       "summary" => "Category",
@@ -116,26 +115,24 @@ class Maker
       object.merge!(dtc)
       
       #add user id, image url, location
-      temp_id = {"User Id " => object['reporter']['id']}
-      object.merge!(temp_id)
-      temp_image = { "Image URL" => object['media']['image_square_100x100']}
-      object.merge!(temp_image)          
-      address_temp = {'Location' => {'latitude' => object['latitude'],
+      temp_id = {"User Id " => object['reporter']['id']}   
+      temp_image = { "Image URL" => object['media']['image_square_100x100']}               
+      temp_address = {'Location' => {'latitude' => object['latitude'],
                                    'longitude' => object['longitude'] }}
-      object.merge!(address_temp)   
+      object.merge!(temp_image)
+      object.merge!(temp_id)
+      object.merge!(temp_address)   
       
       #remove extranious from object
       object.except!("civic_points", "shortened_url", "point", "flag_url", "transitions", "reporter", "media")
-    rescue
-      next
-    end
+
       @payload << object 
     end
     #tocsv
     export
   end
 
-  def tocsv 
+  def tocsv # write to a csv file for initial setup on Socrata
     CSV.open("seecf.csv", "wb") do |csv|
       csv << @payload.first.keys # adds the attributes name on the first line
       @payload.each do |hash|
@@ -144,7 +141,7 @@ class Maker
     end
   end
 
-  def export #push all to Socrata
+  def export #push all to Socrata & log response
    response = @client.post(@view_id, @payload)         #upload to Socrata
     puts response["Errors"].to_s + ' Errors'
     puts response["Rows Deleted"].to_s + ' Rows Deleted'
@@ -157,4 +154,5 @@ class Maker
     LOGGER.info "................. #{response["Rows Updated"]} Rows Updated"
    end
 end
+
 Maker.new.see_click_new
