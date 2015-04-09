@@ -68,7 +68,7 @@ class UpdateZones
        puts response["Rows Deleted"].to_s + ' Rows Deleted'
        puts response["Rows Created"].to_s + ' Rows Created'
        puts response["Rows Updated"].to_s + ' Rows Updated'
-       LOGGER.info "Update complete using permit_up.rb"
+       LOGGER.info "Update complete using zone.rb"
        LOGGER.info "................. #{response["Errors"]} Errors"
        LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"
        LOGGER.info "................. #{response["Rows Created"]} Rows Created"
