@@ -59,7 +59,8 @@ class UpdateZones
         @counter+=1    
 
     end
-    push_to_socrata
+    puts @payload.to_json
+    #push_to_socrata
   end
 
    def push_to_socrata 
