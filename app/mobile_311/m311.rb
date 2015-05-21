@@ -36,8 +36,8 @@ class MobileUp
       @owneradd=[]
       get_token 
       @base_image_url = "http://map2.Mobile311.com/Mobile311/Files/File.aspx?id="
-      @date_today = Date.today.strftime("%Y-%m-%d")
-      
+      @date_today = (Time.now + 5.days).strftime("%Y-%m-%d  %H:%M:%S")
+      @from_date = (Time.now - 15.days).strftime("%Y-%m-%d  %H:%M:%S")
   end
  
   def get_token
@@ -51,7 +51,7 @@ class MobileUp
 
   def get_data
     response = RestClient.post( 'https://map.mobile311.com/ws7/t.asmx/f',
-                                  :json=>{"cmd" => "findworkrequestsbymodifieddate","token"=>"#{@token}","fromdate"=>"2015-1-1",
+                                  :json=>{"cmd" => "findworkrequestsbymodifieddate","token"=>"#{@token}","fromdate"=>"#{@from_date}",
                                   "todate"=>"#{@date_today}","gethistory" => true,"getfiles" => false}.to_json) 
     data=Crack::XML.parse(response)
     xml_res=data["TaskResponse"]["Data"] 
@@ -146,6 +146,7 @@ class MobileUp
 
   def export #push all to Socrata
       response = @client.post(@view_id, @package)         #upload to Socrata
+      puts
       puts response["Errors"].to_s + ' Errors'
       puts response["Rows Deleted"].to_s + ' Rows Deleted'
       puts response["Rows Created"].to_s + ' Rows Created'
@@ -155,6 +156,7 @@ class MobileUp
       LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"
       LOGGER.info "................. #{response["Rows Created"]} Rows Created"
       LOGGER.info "................. #{response["Rows Updated"]} Rows Updated"
+      puts @package
   end
 
   def tocsv 
