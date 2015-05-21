@@ -9,7 +9,7 @@ require 'soda/client'
 require 'configatron'      #configatron for private usernames, passwords ...
 require 'date'
 require 'active_support/time'
-require 'HTTParty'
+#require 'HTTParty'
 require 'csv'
 require 'rest_client'
 require 'rexml/document'
