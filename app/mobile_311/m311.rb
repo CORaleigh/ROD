@@ -156,7 +156,6 @@ class MobileUp
       LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"
       LOGGER.info "................. #{response["Rows Created"]} Rows Created"
       LOGGER.info "................. #{response["Rows Updated"]} Rows Updated"
-      puts @package
   end
 
   def tocsv 
