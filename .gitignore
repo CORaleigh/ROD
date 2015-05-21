@@ -16,3 +16,9 @@
 /tmp
 /lib/defaults.rb
 Gemfile.lock
+# ignore shell scripts
+calendar.shell
+daily_permits.sh
+m311.sh
+monthly_zoning.sh
+scf.sh
