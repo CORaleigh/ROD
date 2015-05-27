@@ -116,7 +116,6 @@ class Maker
       object.except!("civic_points", "shortened_url", "point", "flag_url", "transitions", "reporter", "media")
 
       @payload << object 
-      puts object["Issue Id"]
     end
     export
   end
