@@ -32,7 +32,7 @@ class Maker
      })
   @not_maintained_response = "This location is not maintained by the City of Raleigh" #string for out of jurisdiction flag (OOJ Flag)   
   #@view_id = ''   #socrata view id - working set
-  @view_id =  "mxdz-8p3w"           #socrata view id - published set
+  @view_id =  "jdqx-7xkr"           #socrata view id - published set
   @date = Date.today - 90  #set to get all issues from last x# days
   @statuses =[ 'open', 'acknowledged', 'closed', 'archived' ]
  end
