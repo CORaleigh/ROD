@@ -28,20 +28,30 @@ class Maker
      :password => configatron.client_pass,
      :content_type => 'text/plain',
      :mime_type => 'JSON',
-     :ignore_ssl => true
+     #:ignore_ssl => true
      })
   @not_maintained_response = "This location is not maintained by the City of Raleigh" #string for out of jurisdiction flag (OOJ Flag)   
   #@view_id = ''   #socrata view id - working set
-  @view_id =  "jdqx-7xkr"           #socrata view id - published set
-  @date = Date.today - 60  #set to get all issues from last x# days
-  @payload=[]
+  @view_id =  "mxdz-8p3w"           #socrata view id - published set
+  @date = Date.today - 90  #set to get all issues from last x# days
+  @statuses =[ 'open', 'acknowledged', 'closed', 'archived' ]
  end
 
  def see_click_new #get all issues in last x number of days
-
-  @results=HTTParty.get("https://seeclickfix.com/api/v2/issues.json?place_url=raleigh&after=#{@date}&page=1&per_page=1000")
-    transform
+  @statuses.each do |stat|
+    @page = 1
+    @stat = stat
+    10.times do
+      @payload=[]
+      @results=[]
+      @results=HTTParty.get("https://seeclickfix.com/api/v2/issues.json?place_url=raleigh&status=#{stat}&after=#{@date}&page=#{@page}&per_page=100") 
+      @page += 1
+      unless @results['issues'].size == 0
+        transform
+      end
+    end
   end
+ end
 
    def transform #parse, rename, merge, remove objets 
     @results['issues'].each do |object|
@@ -85,17 +95,17 @@ class Maker
         dta = {"Days to Acknowledge" => " "}       
       end
       if !object["Closed at"].nil?
-        days_to_close = DateTime.parse(object["Closed at"]) - DateTime.parse(start)
-        dtc = {"Days to Close" => days_to_close.to_i}
+        days_to_close = DateTime.parse(object["Closed at"]) - DateTime.parse(start)   
       else
-        dtc = {"Days to Close" => " "}
+        days_to_close = Date.today - DateTime.parse(object["Created at"])     
       end
+      dtc = {"Days to Close" => days_to_close.to_i}
       object.merge!(dta)
       object.merge!(dtc)
       
       #add user id, image url, location
       temp_id = {"User Id " => object['reporter']['id']}   
-      temp_image = { "Image URL" => object['media']['image_square_100x100']}               
+      temp_image = { "Image URL" => object['media']['image_full']}               
       temp_address = {'Location' => {'latitude' => object['latitude'],
                                    'longitude' => object['longitude'] }}
       object.merge!(temp_image)
@@ -106,6 +116,7 @@ class Maker
       object.except!("civic_points", "shortened_url", "point", "flag_url", "transitions", "reporter", "media")
 
       @payload << object 
+      puts object["Issue Id"]
     end
     export
   end
@@ -116,7 +127,9 @@ class Maker
     puts response["Rows Deleted"].to_s + ' Rows Deleted'
     puts response["Rows Created"].to_s + ' Rows Created'
     puts response["Rows Updated"].to_s + ' Rows Updated'
+    puts "Updated page #{@page - 1} of #{@stat}"
     LOGGER.info "Update complete using scf_build2.rb"
+    LOGGER.info "Updated page #{@page -1} of #{@stat}"
     LOGGER.info "................. #{response["Errors"]} Errors"
     LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"
     LOGGER.info "................. #{response["Rows Created"]} Rows Created"

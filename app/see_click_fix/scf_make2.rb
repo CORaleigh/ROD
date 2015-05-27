@@ -106,17 +106,17 @@ class Maker
         dta = {"Days to Acknowledge" => " "}       
       end
       if !object["Closed at"].nil?
-        days_to_close = DateTime.parse(object["Closed at"]) - DateTime.parse(start)
-        dtc = {"Days to Close" => days_to_close.to_i}
+        days_to_close = DateTime.parse(object["Closed at"]) - DateTime.parse(start)   
       else
-        dtc = {"Days to Close" => " "}
+        days_to_close = Date.today - DateTime.parse(object["Created at"])     
       end
+      dtc = {"Days to Close" => days_to_close.to_i}
       object.merge!(dta)
       object.merge!(dtc)
       
       #add user id, image url, location
       temp_id = {"User Id " => object['reporter']['id']}   
-      temp_image = { "Image URL" => object['media']['image_square_100x100']}               
+      temp_image = { "Image URL" => object['media']['image_full']}               
       temp_address = {'Location' => {'latitude' => object['latitude'],
                                    'longitude' => object['longitude'] }}
       object.merge!(temp_image)
