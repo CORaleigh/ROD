@@ -30,8 +30,8 @@ class MobileUp
         :content_type => 'text/plain',
         :mime_type => 'JSON',
         :ignore_ssl => true }) 
-      @view_id = "479x-bzkw" #working set
-      #@view_id = "h5i3-8nha"
+      #@view_id = "479x-bzkw" #working set
+      @view_id = "h5i3-8nha"
       @package=[]
       @owneradd=[]
       get_token 
