@@ -1,4 +1,5 @@
-#m331.rb 
+#use this to rebuild the entire archive. Change the dates to reflect the time period to rebuild. Make sure to change the view_id to
+#a working set on Socrata.
 
 require 'net/https'
 require 'uri'
@@ -37,8 +38,7 @@ class MobileUp
       get_token 
       @base_image_url = "http://map2.Mobile311.com/Mobile311/Files/File.aspx?id="
       @date_today = (Time.now + 1.day).strftime("%Y-%m-%d  %H:%M:%S")
-      @from_date = (Time.now - 15.days).strftime("%Y-%m-%d  %H:%M:%S")
-      @delete_counter = 0
+      #@from_date = (Time.now - 15.days).strftime("%Y-%m-%d  %H:%M:%S")
   end
  
   def get_token
@@ -50,10 +50,23 @@ class MobileUp
     @token = tok["Token"]  
   end
 
-  def get_data  
+  def get_data
+    @time = 695
+    @time2 = 665
+       
+    26.times do
+          @time -= 30
+          @time2 -= 30
+    @s_date=(Time.now - @time.days).strftime("%Y-%m-%d  %H:%M:%S")
+    @end_date = (Time.now - @time2.days).strftime("%Y-%m-%d  %H:%M:%S") 
+
+
+     puts @s_date
+     puts @end_date 
+     puts "......."
     response = RestClient.post( 'https://map.mobile311.com/ws7/t.asmx/f',
-                                  :json=>{"cmd" => "findworkrequestsbymodifieddate","token"=>"#{@token}","fromdate"=>"#{@from_date}",
-                                  "todate"=>"#{@date_today}","gethistory" => true,"getfiles" => false}.to_json) 
+                                  :json=>{"cmd" => "findworkrequestsbymodifieddate","token"=>"#{@token}","fromdate"=>"#{@s_date}",
+                                  "todate"=>"#{@end_date}","gethistory" => true,"getfiles" => false}.to_json) 
     data=Crack::XML.parse(response)
     xml_res=data["TaskResponse"]["Data"] 
     set=JSON.parse(xml_res)
@@ -127,14 +140,16 @@ class MobileUp
             delete_object_hash = {"Id" => @id,
                                   ":deleted" =>  true}
             object.merge!(delete_object_hash)
-            @delete_counter += 1
          end
           #package it all up
           print '.'
-          @package << object.to_hash                
-      
-    end  
-    export                          
+          @package << object.to_hash   
+
+                 
+    end 
+      export
+      @package = []
+    end                            
   end
 
   def lookup(add)    #clean up address and query arcgis rest service for name and addresses
@@ -154,16 +169,14 @@ class MobileUp
   end
 
   def export #push all to Socrata
+    #puts @package
       response = @client.post(@view_id, @package)         #upload to Socrata
       puts
-      puts "#{@delete_counter} objects have been marked for deletion. Socrata will show an error if the object doesn't exist"
       puts response["Errors"].to_s + ' Errors'
       puts response["Rows Deleted"].to_s + ' Rows Deleted'
       puts response["Rows Created"].to_s + ' Rows Created'
       puts response["Rows Updated"].to_s + ' Rows Updated'
-
-      LOGGER.info "Update complete using m311.rb"
-      LOGGER.info "#{@delete_counter} objects have been marked for deletion. Socrata will show an error if the object doesn't exist"
+      LOGGER.info "Update complete using m311_3.rb"
       LOGGER.info "................. #{response["Errors"]} Errors"
       LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"
       LOGGER.info "................. #{response["Rows Created"]} Rows Created"
