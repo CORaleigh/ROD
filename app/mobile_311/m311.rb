@@ -30,8 +30,7 @@ class MobileUp
         :content_type => 'text/plain',
         :mime_type => 'JSON',
         :ignore_ssl => true }) 
-      @view_id = "yumm-x2ni" #working set
-      #@view_id = "h5i3-8nha"
+      @view_id = "h5i3-8nha"
      
       @client_2 = SODA::Client.new({                #repo on corecon.demo.socrata.com 
         :domain => 'corecon.demo.socrata.com',
@@ -42,7 +41,7 @@ class MobileUp
         :mime_type => 'JSON',
         :ignore_ssl => true }) 
       @view_id_2 = "2uyt-2iv6" #working set
-      #@view_id_2 = " "
+       
       @package=[]
       @owneradd=[]
       get_token 
