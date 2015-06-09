@@ -22,7 +22,7 @@ require_relative '../../lib/helpers.rb'
 class MobileUp 
 
   def initialize 
-      @client = SODA::Client.new({
+      @client = SODA::Client.new({                  #repo on data.raleighnc.gov
         :domain => 'data.raleighnc.gov',
         :app_token => configatron.app_token,
         :username => configatron.client_username,
@@ -30,8 +30,18 @@ class MobileUp
         :content_type => 'text/plain',
         :mime_type => 'JSON',
         :ignore_ssl => true }) 
-      #@view_id = "479x-bzkw" #working set
       @view_id = "h5i3-8nha"
+     
+      @client_2 = SODA::Client.new({                #repo on corecon.demo.socrata.com 
+        :domain => 'corecon.demo.socrata.com',
+        :app_token => configatron.app_token,
+        :username => configatron.client_username,
+        :password => configatron.client_pass,
+        :content_type => 'text/plain',
+        :mime_type => 'JSON',
+        :ignore_ssl => true }) 
+      @view_id_2 = "2uyt-2iv6" #working set
+       
       @package=[]
       @owneradd=[]
       get_token 
@@ -154,15 +164,33 @@ class MobileUp
   end
 
   def export #push all to Socrata
-      response = @client.post(@view_id, @package)         #upload to Socrata
+      response = @client.post(@view_id, @package)         #upload to Socrata @ data.raleighnc.gov
       puts
+      puts "Update complete for mobile 311 @ data.raleighnc.com"
       puts "#{@delete_counter} objects have been marked for deletion. Socrata will show an error if the object doesn't exist"
       puts response["Errors"].to_s + ' Errors'
       puts response["Rows Deleted"].to_s + ' Rows Deleted'
       puts response["Rows Created"].to_s + ' Rows Created'
       puts response["Rows Updated"].to_s + ' Rows Updated'
 
-      LOGGER.info "Update complete using m311.rb"
+      LOGGER.info "Update complete using m311.rb for data.raleighnc.gov"
+      LOGGER.info "#{@delete_counter} objects have been marked for deletion. Socrata will show an error if the object doesn't exist"
+      LOGGER.info "................. #{response["Errors"]} Errors"
+      LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"
+      LOGGER.info "................. #{response["Rows Created"]} Rows Created"
+      LOGGER.info "................. #{response["Rows Updated"]} Rows Updated"
+
+############## upload to 2nd repo on Socrata
+      response = @client_2.post(@view_id_2, @package)         #upload to Socrata @ corecon.demo.socrata.com 
+      puts
+      puts "Update complete for mobile 311 @ corcon.demo.socrata.com"
+      puts "#{@delete_counter} objects have been marked for deletion. Socrata will show an error if the object doesn't exist"
+      puts response["Errors"].to_s + ' Errors'
+      puts response["Rows Deleted"].to_s + ' Rows Deleted'
+      puts response["Rows Created"].to_s + ' Rows Created'
+      puts response["Rows Updated"].to_s + ' Rows Updated'
+
+      LOGGER.info "Update complete using m311.rb for corecon.demo.socrata.com"
       LOGGER.info "#{@delete_counter} objects have been marked for deletion. Socrata will show an error if the object doesn't exist"
       LOGGER.info "................. #{response["Errors"]} Errors"
       LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"

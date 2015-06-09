@@ -60,7 +60,7 @@ class UpdateZones
 
     end
     puts @payload.to_json
-    #push_to_socrata
+    push_to_socrata
   end
 
    def push_to_socrata 
