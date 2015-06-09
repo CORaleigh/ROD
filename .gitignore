@@ -22,3 +22,5 @@ daily_permits.sh
 m311.sh
 monthly_zoning.sh
 scf.sh
+# ignore folder - stash folder 
+/app/git_ignore
