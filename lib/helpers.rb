@@ -11,6 +11,9 @@ class Hash
   end
 end
 
+
+
+
  
   def hm(seconds)
    Time.at(seconds).utc.strftime("%H:%M")
