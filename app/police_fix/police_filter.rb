@@ -1,5 +1,5 @@
-#Filter for police data set to bring into compliance with police policies
-#Requires csv file in this folder
+#collection of methods filters for police data set to bring into compliance with police policies
+#this is a loose collection and is not intended to run as a single script
 
 require 'net/https'
 require 'hashie'
@@ -27,7 +27,7 @@ class FixPolice
       })
     @payload=[]
     @sliced_payload = []
-    @view_id = 'guyh-emm5'  
+    @view_id = 'cfqc-c3tb'  
     @counter = 0
     @counter_2 = 0
     http = Net::HTTP.new(@host, @port) #fix timeout issues
@@ -52,27 +52,62 @@ class FixPolice
   
   def process #switch for uploading entire set or just uploading filtered data (smaller sub set)
     #bulk_filter
-    sub_filter
-    #readd
+    #sub_filter
+    readd
+    #csv_to_hash
+  end
+ 
+  def csv_to_hash
+    @arry = []
+    csv_data = CSV.read("Police_Master.csv", "r")
+    headers = csv_data.shift.map {|i| i.to_s }
+    string_data = csv_data.map {|row| row.map {|cell| cell.to_s } }
+    raw_data = string_data.map {|row| Hash[*headers.zip(row).flatten] }
+    raw_data.each do |i|
+      @arry << i
+    end
+    puts @arry
+  end
+
+  def beat_to_district(filter)
+    case filter["BEAT"].to_i
+    when 100..199, 2100..2199
+      temp_dist = {"DISTRICT" => "NORTHWEST"}
+    when 200..299, 2200..2299
+      temp_dist = {"DISTRICT" => "NORTH"}
+    when 300..399, 2300..2399
+      temp_dist = {"DISTRICT" => "NORTHEAST"}
+    when 400..499, 2400..2499
+      temp_dist = {"DISTRICT" => "SOUTHEAST"} 
+    when 500..599, 2500..2599
+      temp_dist = {"DISTRICT" => "DOWNTOWN"} 
+    when 600..699, 2600..2699
+      temp_dist = {"DISTRICT" => "SOUTWEST"}  
+    else 
+      temp_dist = {"DISTRICT" => ""} 
+    end
+    filter.merge!(temp_dist)
+     
   end
 
   def readd
 
-    csv_data = CSV.read("Police_Master.csv", "r")
+    csv_data = CSV.read("Police_Master.csv", "r") #use for | seperated values  , col_sep: '|'
     headers = csv_data.shift.map {|i| i.to_s }
     string_data = csv_data.map {|row| row.map {|cell| cell.to_s } }
     @raw_data = string_data.map {|row| Hash[*headers.zip(row).flatten] }
     
     @raw_data.each do |filter|
-       
-      if (@filter.include?(filter["LCR DESC"].downcase)) 
-        @payload << filter 
-        print "."
+      beat_to_district(filter)
+         nfil = {"INC NO" => filter["INC NO"], "DISTRICT" => filter["DISTRICT"]}
+        @payload <<  nfil    
         @counter +=1  
-        puts @counter
-      end
+        
+       
     end
-export
+    #puts @payload
+    puts @counter
+  export
 
  
   end
@@ -120,17 +155,10 @@ export
     puts @counter_2
     puts "filtered"
     puts @counter
-    chunk
+   
     #export
   end
 
-  def chunk #chunk into managable parts for easier upload
-    @payload.each_slice(100) do |slice|
-      @sliced_payload << slice
-      export
-      sleep(30.seconds)#try to keep Socrata from choking
-    end
-  end
 
   def export  #  send to Socrata
       #response = @client.post(@view_id, @sliced_payload)    #upload to socrata in chunks

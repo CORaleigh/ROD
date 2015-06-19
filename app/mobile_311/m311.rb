@@ -164,6 +164,7 @@ class MobileUp
   end
 
   def export #push all to Socrata
+      clients=[@client, @lient_2]
       response = @client.post(@view_id, @package)         #upload to Socrata @ data.raleighnc.gov
       puts
       puts "Update complete for mobile 311 @ data.raleighnc.com"
