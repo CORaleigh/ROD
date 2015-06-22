@@ -35,15 +35,15 @@ class ConnectQuery
       })
 
     @db = db
-    @view_id = 'szhj-3few'   # data-set code for Socrata
+    @view_id = 'hyba-m4ki'   # data-set code for Socrata
     @payload =[]
     @package =[]
-
+    @date = (Date.today - 180.days).strftime(ConnectQuery::DATE_FORMAT)
   end
 
   def stepper              #get sql and start processing
      LOGGER.info "Development Plans update initiated"
-     @sql = get_sql 
+     @sql = get_sql(@date) 
      process
   end
 def process
@@ -93,7 +93,7 @@ end
   end
 
 
-  def get_sql
+  def get_sql(date)
       <<-SQL 
           select NVL(dch.ncpin, ' ') as pin,
           NVL(d.DEVPLAN_ID, 0) as devplan_id,
@@ -133,7 +133,9 @@ end
           (select devplan_id, min(address_id) as address_id, min(ncpin) as ncpin  from iris.devplans_case_history group by devplan_id) dch, 
           iris.development_plans d1, iris.addresses a,
           iris.streets s
-          where d.devplan_id = dch.devplan_id and d.devplan_id = d1.devplan_id and a.address_id = dch.address_id and s.street_id = a.street_id
+          where d.devplan_id = dch.devplan_id and d.devplan_id = d1.devplan_id and a.address_id = dch.address_id 
+          and s.street_id = a.street_id and  d1.update_date  >= TO_DATE( '#{date}' , 'mm/dd/yyyy')
+
           order by d.submittal_date desc
       SQL
   end
