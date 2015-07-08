@@ -61,7 +61,7 @@
     - helpers.rb - helper files for adjusting dateTime elements & extending the Hash Class for the renaming of hash keys
 
 
-**log** - log files for all scripts
+**[log](log)** - log files for all scripts
 
 **shell scripts** - shell scripts run from a cron job to update the data sets	
 
