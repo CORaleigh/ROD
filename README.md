@@ -1,5 +1,6 @@
 
-## **R**aleigh **O**pen **D**ata A collection of Ruby scripts for automating ETL methods on Raleigh data sets
+## **R**aleigh **O**pen **D**ata   
+### A collection of Ruby scripts for automating ETL methods on Raleigh data sets
 
 ###Files
 
