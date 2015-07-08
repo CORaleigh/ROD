@@ -1,7 +1,7 @@
 #helpers.rb
 
 class Hash
-  def rewrite mapping
+  def rewrite mapping    #rename hash keys
     mapping.inject(self) do |memo,(oldkey,newkey)|
     	memo[newkey] = memo[oldkey]
     	memo.delete(oldkey) 
@@ -15,7 +15,7 @@ end
 
 
  
-  def hm(seconds)
+  def hm(seconds) #converts seconds to hours and minutes
    Time.at(seconds).utc.strftime("%H:%M")
   end
   

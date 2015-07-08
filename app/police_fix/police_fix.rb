@@ -50,7 +50,7 @@ class FixPolice
     string_data = csv_data.map {|row| row.map {|cell| cell.to_s } }
     @payload = string_data.map {|row| Hash[*headers.zip(row).flatten] }
     @payload.each do |remove|
-      addon = {":deleted" =>  true}
+      addon = {":deleted" =>  true}  #all rows with a unique identifier and a {":deleted" => true } hash will be deleted from socrata
       remove.merge!(addon)
     end
     puts 'purging police records....'

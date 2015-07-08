@@ -405,3 +405,183 @@ I, [2015-03-06T14:56:53.459138 #3491]  INFO -- : ................. 1 Errors
 I, [2015-03-06T14:56:53.459165 #3491]  INFO -- : ................. 0 Rows Deleted
 I, [2015-03-06T14:56:53.459185 #3491]  INFO -- : ................. 18 Rows Created
 I, [2015-03-06T14:56:53.459203 #3491]  INFO -- : ................. 80 Rows Updated
+I, [2015-06-26T14:41:25.936737 #856]  INFO -- : Update for building CO date initiated.
+I, [2015-06-26T14:43:24.241188 #859]  INFO -- : Update for building CO date initiated.
+I, [2015-06-26T14:50:27.606952 #865]  INFO -- : Update for building CO date initiated.
+I, [2015-06-26T14:55:01.952643 #871]  INFO -- : Update for building CO date initiated.
+I, [2015-06-26T14:57:16.063046 #874]  INFO -- : Update for building CO date initiated.
+I, [2015-06-26T15:02:54.160308 #882]  INFO -- : Update for building CO date initiated.
+I, [2015-06-29T10:16:26.314976 #67631]  INFO -- : Update for building CO date initiated.
+I, [2015-06-29T10:17:18.365452 #67634]  INFO -- : Update for building CO date initiated.
+I, [2015-06-29T10:32:19.536940 #67651]  INFO -- : Update for building CO date initiated.
+I, [2015-06-29T10:32:50.619838 #67652]  INFO -- : Update for building CO date initiated.
+I, [2015-06-29T10:40:33.210878 #67661]  INFO -- : Update for building CO date initiated.
+I, [2015-06-29T10:41:58.907496 #67664]  INFO -- : Update for building CO date initiated.
+I, [2015-06-29T10:42:24.073128 #67667]  INFO -- : Update for building CO date initiated.
+I, [2015-06-29T10:44:44.857831 #67671]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T10:07:36.537148 #68795]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T10:08:39.604701 #68801]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T10:43:04.885613 #68831]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T10:43:56.575950 #68833]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T10:45:15.181331 #68835]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T10:51:20.445200 #68842]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T10:52:25.209102 #68845]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T13:15:28.805289 #584]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T13:20:51.774022 #590]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T13:46:42.162424 #611]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T13:57:29.421404 #619]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T14:30:20.119750 #671]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T14:31:44.074755 #675]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T15:55:51.852766 #759]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T15:56:19.307438 #761]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T15:59:17.052907 #765]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T15:59:43.469385 #766]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:00:16.036312 #767]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:01:13.184382 #771]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:04:27.815072 #774]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:04:51.635496 #776]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:05:08.802757 #778]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:05:42.312024 #781]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:05:57.419942 #782]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:07:24.714728 #784]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:08:40.024265 #786]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:08:44.434592 #788]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:09:48.315809 #793]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:10:34.528206 #796]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:11:57.613547 #798]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:12:43.208530 #801]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:41:22.941684 #837]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:42:55.201659 #840]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:43:22.811147 #848]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:44:38.658164 #852]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:53:09.300787 #860]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T16:53:56.751505 #864]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T17:18:20.085244 #887]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T17:18:43.634851 #889]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T17:21:16.098189 #894]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T17:22:06.487453 #897]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T17:23:49.359442 #899]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T17:28:50.652161 #905]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T17:29:22.232744 #907]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T17:40:15.056744 #924]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T17:42:18.694784 #928]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T17:59:46.513679 #945]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T18:01:24.228565 #948]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T18:04:18.747292 #960]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T18:07:56.903767 #969]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T20:56:57.449671 #1200]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:01:16.637501 #1233]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:02:44.298569 #1235]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:03:17.277794 #1238]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:03:50.344125 #1241]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:06:16.341662 #1248]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:07:00.200898 #1252]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:09:56.939072 #1259]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:27:16.143067 #1276]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:33:07.113627 #1284]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:38:26.898528 #1297]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:39:49.906498 #1301]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:42:05.559368 #1306]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:43:13.869121 #1310]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:44:11.863243 #1312]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:45:37.643875 #1315]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:47:21.158396 #1318]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:48:30.690864 #1321]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:49:04.572481 #1323]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:49:55.427875 #1326]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:51:17.271332 #1328]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:51:38.871079 #1331]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T21:58:02.185179 #1337]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:01:07.234269 #1342]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:03:46.830227 #1348]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:09:02.185662 #1357]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:16:57.026839 #1366]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:17:33.574764 #1368]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:17:59.466348 #1371]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:18:27.869507 #1374]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:20:28.132982 #1378]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:21:10.571125 #1380]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:28:03.072363 #1397]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:40:27.509660 #1415]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:42:20.632493 #1418]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:42:59.925124 #1420]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:44:13.815445 #1426]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:45:03.776986 #1428]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:45:54.499534 #1431]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:52:02.386337 #1437]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:52:46.400533 #1439]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:56:29.607686 #1446]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:56:59.255470 #1448]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:57:48.089497 #1450]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:58:06.438316 #1453]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T22:59:39.889944 #1456]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T23:00:31.709059 #1459]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T23:04:04.885321 #1464]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T23:04:51.869844 #1467]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T23:19:02.085687 #1480]  INFO -- : Update for building CO date initiated.
+I, [2015-06-30T23:20:21.314522 #1483]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T09:53:20.193011 #1631]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T10:01:03.454123 #1639]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T10:01:43.927739 #1641]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T10:02:20.455086 #1643]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T10:06:07.417131 #1647]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T10:11:30.476288 #1652]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T10:43:20.172026 #1687]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T11:40:48.770225 #1748]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T11:42:14.720675 #1748]  INFO -- : Permit CO dates updated 
+I, [2015-07-01T11:42:14.720770 #1748]  INFO -- : ................. 2027 Errors
+I, [2015-07-01T11:42:14.720803 #1748]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-01T11:42:14.720828 #1748]  INFO -- : ................. 0 Rows Created
+I, [2015-07-01T11:42:14.720851 #1748]  INFO -- : ................. 1213 Rows Updated
+I, [2015-07-01T11:48:40.172196 #1755]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T11:49:08.828662 #1755]  INFO -- : Permit CO dates updated 
+I, [2015-07-01T11:49:08.828757 #1755]  INFO -- : ................. 3172 Errors
+I, [2015-07-01T11:49:08.828797 #1755]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-01T11:49:08.828823 #1755]  INFO -- : ................. 0 Rows Created
+I, [2015-07-01T11:49:08.828846 #1755]  INFO -- : ................. 68 Rows Updated
+I, [2015-07-01T11:59:16.278068 #1765]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T12:00:59.340006 #1765]  INFO -- : Permit CO dates updated 
+I, [2015-07-01T12:00:59.340103 #1765]  INFO -- : ................. 3030 Errors
+I, [2015-07-01T12:00:59.340137 #1765]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-01T12:00:59.340164 #1765]  INFO -- : ................. 0 Rows Created
+I, [2015-07-01T12:00:59.340190 #1765]  INFO -- : ................. 142 Rows Updated
+I, [2015-07-01T12:11:10.957050 #1777]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T12:11:55.941449 #1777]  INFO -- : Permit CO dates updated 
+I, [2015-07-01T12:11:55.941547 #1777]  INFO -- : ................. 0 Errors
+I, [2015-07-01T12:11:55.941580 #1777]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-01T12:11:55.941606 #1777]  INFO -- : ................. 0 Rows Created
+I, [2015-07-01T12:11:55.941630 #1777]  INFO -- : ................. 3030 Rows Updated
+I, [2015-07-01T12:26:27.105976 #1796]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T12:26:57.717478 #1796]  INFO -- : Permit CO dates updated 
+I, [2015-07-01T12:26:57.717564 #1796]  INFO -- : ................. 3030 Errors
+I, [2015-07-01T12:26:57.717595 #1796]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-01T12:26:57.717618 #1796]  INFO -- : ................. 0 Rows Created
+I, [2015-07-01T12:26:57.717638 #1796]  INFO -- : ................. 4 Rows Updated
+I, [2015-07-01T12:34:58.551711 #1811]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T12:35:25.418993 #1811]  INFO -- : Permit CO dates updated 
+I, [2015-07-01T12:35:25.419074 #1811]  INFO -- : ................. 0 Errors
+I, [2015-07-01T12:35:25.419101 #1811]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-01T12:35:25.419123 #1811]  INFO -- : ................. 0 Rows Created
+I, [2015-07-01T12:35:25.419142 #1811]  INFO -- : ................. 3030 Rows Updated
+I, [2015-07-01T13:20:27.559646 #1853]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T13:21:10.777413 #1853]  INFO -- : Permit CO dates updated 
+I, [2015-07-01T13:21:10.777512 #1853]  INFO -- : ................. 0 Errors
+I, [2015-07-01T13:21:10.777545 #1853]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-01T13:21:10.777581 #1853]  INFO -- : ................. 0 Rows Created
+I, [2015-07-01T13:21:10.777605 #1853]  INFO -- : ................. 0 Rows Updated
+I, [2015-07-01T14:10:38.910875 #1959]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T14:19:09.745666 #1977]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T14:20:23.379104 #1977]  INFO -- : Permit CO dates updated 
+I, [2015-07-01T14:20:23.379200 #1977]  INFO -- : ................. 0 Errors
+I, [2015-07-01T14:20:23.379237 #1977]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-01T14:20:23.379267 #1977]  INFO -- : ................. 0 Rows Created
+I, [2015-07-01T14:20:23.379294 #1977]  INFO -- : ................. 3244 Rows Updated
+I, [2015-07-01T14:30:50.750346 #1994]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T14:31:32.424565 #2002]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T14:31:48.196996 #2002]  INFO -- : Nothing to see here!
+I, [2015-07-01T14:32:16.430431 #2007]  INFO -- : Update for building CO date initiated.
+I, [2015-07-01T14:32:26.723218 #2007]  INFO -- : Nothing to see here!
+I, [2015-07-01T14:32:26.723328 #2007]  INFO -- : Permit CO dates are all up to date
+I, [2015-07-02T00:08:44.636518 #2332]  INFO -- : Update for building permits CO date initiated.
+I, [2015-07-02T00:10:18.103867 #2332]  INFO -- : Nothing to see here!
+I, [2015-07-02T00:10:18.103976 #2332]  INFO -- : Permit CO dates are all up to date
