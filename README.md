@@ -1,9 +1,9 @@
 
-## **R**aleigh **O**pen **D**ata   
-### A collection of Ruby scripts for automating ETL methods on Raleigh data sets
+### Raleigh Open Data
+##### A collection of Ruby scripts for automating ETL methods on Raleigh data sets
+## 
 
-###Files
-
+#### Files 
 **app** - links to each data set's README file
 
   [dev_plan](app/dev_plan/README.md)  - Development plans  
