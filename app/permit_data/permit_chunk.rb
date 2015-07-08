@@ -43,7 +43,7 @@ class ConnectQuery
     @view_id = 'hk3n-ieai'   #permit data-set code for Socrata
     @payload =[]
     @min=min                 #return permit info starting at permit number
-    @max=@min.to_i + 50    #return permit info ending at permit number + 10,000
+    @max=@min.to_i + 10000   #return permit info ending at permit number + 10,000
 
   end
 
