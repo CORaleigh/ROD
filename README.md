@@ -9,21 +9,21 @@
   **[dev_plan](app/dev_plan/README.md)**  - Development plans  
 
     -  plans.rb  
-  [mobile_311](app/mobile_311/README.md) - Mobile 311 issues  
+  **[mobile_311](app/mobile_311/README.md)** - Mobile 311 issues  
 
     - m311.rb  
     - rebuild_archive.rb  
-  [new_police](app/new_police/README.md)  - New police data reporting 
+  **[new_police](app/new_police/README.md)**  - New police data reporting 
  
     - police_data.rb 
 
-  [parking](app/parking/README.md) - Metered parking spaces data 
+  **[parking](app/parking/README.md)** - Metered parking spaces data 
    
     - duncanQuery.rb  
     - parkingseed.rb  
     - space.json  
 
-  [permit_data](app/permit_data/README.md)  - Building permit data  
+  **[permit_data](app/permit_data/README.md)**  - Building permit data  
 
     - permit_chunk.rb  
     - permit_co_update.rb  
@@ -31,14 +31,14 @@
     - test_permit_up.rb  
     - test_permit_chunk.rb  
 
-  [pm\_calendar](app/pm_calendar/README.md)  -  Public meetings calendar data 
+  **[pm\_calendar](app/pm_calendar/README.md)**  -  Public meetings calendar data 
  
     - public_meetings_cal.rb  
-  [police\_fix](app/police_fix/README.md)  - A collection of methods for bringing the historical data set into compliance with police policies and editing/dupe checking
+  **[police\_fix](app/police_fix/README.md)**  - A collection of methods for bringing the historical data set into compliance with police policies and editing/dupe checking
 
     - police_filter.rb  
     - police_fix.rb
-  [zoning](app/zoning/README.md)   - re-zoning data
+  **[zoning](app/zoning/README.md)**   - re-zoning data
     
     - zone.rb
 
