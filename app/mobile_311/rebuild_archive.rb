@@ -50,15 +50,15 @@ class MobileUp
     @token = tok["Token"]  
   end
 
-  def get_data
-    @time = 695
-    @time2 = 665
+  def get_data 
+    @time = 695      #sets time period starting 695 days ago (beginning of mobile311 data gathering. may need adjustment for future re-builds)
+    @time2 = 665     #sets time period starting 665 days ago (30 days differance so we can poll Mobile311 30 days at a time)
        
-    26.times do
-          @time -= 30
-          @time2 -= 30
-    @s_date=(Time.now - @time.days).strftime("%Y-%m-%d  %H:%M:%S")
-    @end_date = (Time.now - @time2.days).strftime("%Y-%m-%d  %H:%M:%S") 
+    26.times do # loops 26 times getting 30 day period of data each iteration
+      @time -= 30
+      @time2 -= 30
+      @s_date = (Time.now - @time.days).strftime("%Y-%m-%d  %H:%M:%S")            #sets start date today - @time days
+      @end_date = (Time.now - @time2.days).strftime("%Y-%m-%d  %H:%M:%S")       #sets end date today - @time2 days
 
 
      puts @s_date
@@ -74,7 +74,7 @@ class MobileUp
     set["WorkRequests"].each do |object|
        if object["statusname"] == 'Flagged' || object ["statusname"] == "Completed" #only get objects with 'flagged' or 'completed' status
            
-           object.rewrite( "workrequestid" => "Id",
+           object.rewrite( "workrequestid" => "Id",                 #rename keys
                            "worktypename" => "Work Type",
                            "posteddate" => "Post Date",
                            "collecteddate" => "Date Flagged",
