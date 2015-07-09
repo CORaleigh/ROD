@@ -2,7 +2,12 @@
 ### Raleigh Open Data   
 ##### A collection of Ruby scripts for automating ETL methods on Raleigh data sets
 
----  
+--- 
+
+! Always create a working data set and change the _@view\_id_ to the working sets XXXX-XXXX code when modifying data sets that are in production !  
+
+---
+
 #### Files
 **app** - links to each data set's README file
 
