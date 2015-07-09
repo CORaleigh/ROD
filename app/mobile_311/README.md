@@ -22,7 +22,8 @@
   - get_token  - gets token from Mobile311
   - get data  - sets up loop to poll Mobile311 for all data 30 days at a time starting with the beginning of mobile311 data gathering. The _@time_ and _@time2_ variables should be set to # of days since Raleigh started gathering data with Mobile311 and -30 respectively. The # of loops should also be set respective to the number of 30 day periods between start and the current date. The script then gets new/updated data from Mobile311 via API, modifies the new data (fixes dates, renames hash keys, removes extraneous data, adds delete key for objects that should be deleted from Socrata, adds additional fields & packages it up for export)
   - lookup - normalizes address fields, removes unwanted characters and posts  it to ArcGIS REST Service to get property owners name and address and adds the new data to the set
-  - export - posts data to Raleigh data sets & logs Socrata response    
+  - export - posts data to Raleigh data sets & logs Socrata response   
+   
 >To run manually: cd app/mobile311 - must be on OakTree or connected via VPN  
  _ruby rebuild\_archive.rb_  
         
