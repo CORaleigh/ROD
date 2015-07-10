@@ -40,18 +40,18 @@ class MobileUp
         :content_type => 'text/plain',
         :mime_type => 'JSON',
         :ignore_ssl => true }) 
-      @view_id_2 = "2uyt-2iv6" #working set
+      @view_id_2 = "2uyt-2iv6"  
        
       @package=[]
       @owneradd=[]
       get_token 
       @base_image_url = "http://map2.Mobile311.com/Mobile311/Files/File.aspx?id="
       @date_today = (Time.now + 1.day).strftime("%Y-%m-%d  %H:%M:%S")
-      @from_date = (Time.now - 15.days).strftime("%Y-%m-%d  %H:%M:%S")
+      @from_date = (Time.now - 1.days).strftime("%Y-%m-%d  %H:%M:%S")
       @delete_counter = 0
   end
  
-  def get_token
+  def get_token  #get token from mobile311 for inclusion in other requests
     response = RestClient.post( 'https://map.mobile311.com/ws7/t.asmx/f',
                                 :json=>{"cmd"=>"signin","username"=>"#{configatron.m311_username}","password"=>"#{configatron.m311_pass}"}.to_json)
     @data = Crack::XML.parse(response)
@@ -60,7 +60,7 @@ class MobileUp
     @token = tok["Token"]  
   end
 
-  def get_data  
+  def get_data  #get updated data from last 15 days
     response = RestClient.post( 'https://map.mobile311.com/ws7/t.asmx/f',
                                   :json=>{"cmd" => "findworkrequestsbymodifieddate","token"=>"#{@token}","fromdate"=>"#{@from_date}",
                                   "todate"=>"#{@date_today}","gethistory" => true,"getfiles" => false}.to_json) 
@@ -68,9 +68,9 @@ class MobileUp
     xml_res=data["TaskResponse"]["Data"] 
     set=JSON.parse(xml_res)
     
-    set["WorkRequests"].each do |object|
+    set["WorkRequests"].each do |object|  #parse response and modify 'completed' & 'flagged' items
        if object["statusname"] == 'Flagged' || object ["statusname"] == "Completed" #only get objects with 'flagged' or 'completed' status
-           
+           #rename column values
            object.rewrite( "workrequestid" => "Id",
                            "worktypename" => "Work Type",
                            "posteddate" => "Post Date",
@@ -88,11 +88,11 @@ class MobileUp
            #add empty keys => values to object 
            object["Property Owner Name"] = " "
            object["Property Owner Address"] = " "
-           object["City1"] = " "
+           object["City1"] = " " 
            temp_flagged ={"Flagged By" => (object["username"])}
            object.merge!(temp_flagged)
-          
-           #fix date objects
+           
+           #fix date objects. Uses date_fixer helper in lib/helpers.rb - converts timestamp from milliseconds from jan 1 1970 to real date-time and adjusts for time zone (-4 hours)
            unless object["Post Date"].nil?
               object["Post Date"] = date_fixer(object["Post Date"]) 
            end
@@ -103,14 +103,13 @@ class MobileUp
               object["Modified Date"] = date_fixer(object["Modified Date"])
            end 
 
-           #look up owner name and address       
+           #look up owner name and address and add to hash   
            addr =   object["Violation Address"]     
            lookup(addr)
            object["Property Owner Name"] = @ownername 
            object["Property Owner Address"] = @owneradd
            object["City1"] = @city1
             
-
            #fix irritating (null) for comments key
            if object["Comments"] == "(null)"
               object["Comments"] = " "
@@ -164,39 +163,33 @@ class MobileUp
   end
 
   def export #push all to Socrata
-      clients=[@client, @lient_2]
-      response = @client.post(@view_id, @package)         #upload to Socrata @ data.raleighnc.gov
+      counter = 0
+      clients = {@client => @view_id, @client_2 => @view_id_2}
+      clients.each do |client, view_id|
+      response = client.post(view_id, @package)         #upload to Socrata @ data.raleighnc.gov
       puts
-      puts "Update complete for mobile 311 @ data.raleighnc.com"
-      puts "#{@delete_counter} objects have been marked for deletion. Socrata will show an error if the object doesn't exist"
+      if counter == 0 
+        log_flag = "Update complete for mobile 311 @ data.raleighnc.com"
+      else
+        log_flag = "Update complete for mobile 311 @ corcon.demo.socrata.com"
+      end
+      puts log_flag
+      puts "#{@delete_counter} objects have been marked for deletion. Socrata will show an error if the object doesn't exist in data set"
       puts response["Errors"].to_s + ' Errors'
       puts response["Rows Deleted"].to_s + ' Rows Deleted'
       puts response["Rows Created"].to_s + ' Rows Created'
       puts response["Rows Updated"].to_s + ' Rows Updated'
 
-      LOGGER.info "Update complete using m311.rb for data.raleighnc.gov"
-      LOGGER.info "#{@delete_counter} objects have been marked for deletion. Socrata will show an error if the object doesn't exist"
+      LOGGER.info log_flag
+      LOGGER.info "#{@delete_counter} objects have been marked for deletion."
+      LOGGER.info "  Socrata will show an error if the object doesn't exist in data set."
       LOGGER.info "................. #{response["Errors"]} Errors"
       LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"
       LOGGER.info "................. #{response["Rows Created"]} Rows Created"
       LOGGER.info "................. #{response["Rows Updated"]} Rows Updated"
-
-############## upload to 2nd repo on Socrata
-      response = @client_2.post(@view_id_2, @package)         #upload to Socrata @ corecon.demo.socrata.com 
-      puts
-      puts "Update complete for mobile 311 @ corcon.demo.socrata.com"
-      puts "#{@delete_counter} objects have been marked for deletion. Socrata will show an error if the object doesn't exist"
-      puts response["Errors"].to_s + ' Errors'
-      puts response["Rows Deleted"].to_s + ' Rows Deleted'
-      puts response["Rows Created"].to_s + ' Rows Created'
-      puts response["Rows Updated"].to_s + ' Rows Updated'
-
-      LOGGER.info "Update complete using m311.rb for corecon.demo.socrata.com"
-      LOGGER.info "#{@delete_counter} objects have been marked for deletion. Socrata will show an error if the object doesn't exist"
-      LOGGER.info "................. #{response["Errors"]} Errors"
-      LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"
-      LOGGER.info "................. #{response["Rows Created"]} Rows Created"
-      LOGGER.info "................. #{response["Rows Updated"]} Rows Updated"
+      LOGGER.info " "
+      counter += 1
+    end
   end
 
   def tocsv 

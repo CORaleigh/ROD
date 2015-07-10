@@ -93,7 +93,6 @@ class UpdatePermit
             :landusecode_descr => :land_use_code            
  )
 
-
     ##############set proper date_type
            h[:issue_date]=h[:issue_date].to_datetime
               if !h[:building_co_date].nil? 

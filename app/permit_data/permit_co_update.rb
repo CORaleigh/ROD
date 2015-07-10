@@ -1,7 +1,5 @@
  
-
-
-
+require 'httparty'
 require 'net/https'
 require 'hashie'
 require 'rubygems'
@@ -18,10 +16,7 @@ require_relative '../../lib/helpers.rb'
  
 DB = Sequel.oracle( :database => configatron.db, :host => configatron.host, :port => 1531, :user => configatron.user, :password => configatron.pass)
 
-
-class Permit_co_date  
-
-  DATE_FORMAT = '%m/%d/%Y'
+class Permit_co_date
 
   def initialize(db) 
     @client = SODA::Client.new({
@@ -34,126 +29,88 @@ class Permit_co_date
       :ignore_ssl => true }) 
 
     @db = db
- 
-    #@view_id = 'hk3n-ieai'           #permit data-set code for Socrata
-    #@view_id = 'nii6-a7pg'            #working permit data set
-    @payload =[]
-     
+    @view_id = 'hk3n-ieai'           #permit data-set code for Socrata
+    #@view_id = 'vhs9-de7d'            #working permit data set
+    @package = []
+    @num_arry = []
     @counter=0 
   end
 
   def process 
-    LOGGER.info "Update for building CO date initiated."
+    LOGGER.info "Update for building permits CO date initiated."
     get_co #get permit co dates from existing set on socrata
-     
-
-    #transform
   end
-  
-  
-  def get_co
-
-     
-
-      #response = @client.get(@view_id, {  :building_date  =>  nil?})
-response = @client.get(@view_id,  ( $where = '$building_date'  = " " ))
-puts response[2]
-puts response
-puts "......."
+ 
+  def get_co #get all permits from Socrata with blank building_co_date
+      response = @client.get(@view_id, 
+          "$select" => :permit_number,
+          "$where" => "building_date IS NULL",
+          "$limit" => 50000,
+          "$order" => :permit_number,
+          "$offset" => 0)
+      response.each do |pnum|
+        @num_arry << pnum["permit_number"]
+      end
+      lookup
   end
 
-
-  def get_sql_by_date(date)
-      <<-SQL 
-        SELECT "PERM_GROUPS"."DEVPLAN_DEVPLAN_NAME", "PERM_GROUPS"."GRP_ISSUE_DATE", "PERM_GROUPS"."GRP_PROPOSED_WORK", "PERM_BLDG"."PERM_WORK_TYPE_CODE_DESCR", "PERM_GROUPS"."STREET_NUM", "PERM_GROUPS"."DIR_PRE", "PERM_GROUPS"."STREET_NAME", "PERM_GROUPS"."STREET_TYPE", "PERM_BLDG"."PERMIT_NUM", "PERM_BLDG"."PERM_SQ_FT_FOR_FEE", "PERM_GROUPS"."GRP_BLDG_NUM_STORIES", "PERM_GROUPS"."NCPIN", "PERM_BLDG"."PERM_COST_OF_CONSTRUCTION", "PERM_GROUPS"."GRP_CNTY_PARC_OWNER_NAME", "PERM_BLDG"."PERM_CONTRACTOR_NAME", "PERM_GROUPS"."RPID_LOT", "PERM_GROUPS"."PERM_C_BLDG_CO_DATE", "PERM_BLDG"."PERM_AUTHORIZED_WORK", "PERM_GROUPS"."GRP_B_NUM_DWEL_UNITS_TOTAL", "PERMIT_CENSUS_LAND_USE_CODES"."CENSUS_LAND_USE_CODE_DESCR", "PARCELS"."CNTY_ACCT_NUM", "PERM_GROUPS"."GRP_STATUS", "PERM_GROUPS"."STREET_SUITE", "PARCELS"."PARC_COUNTY", "CITY_LIMITS_CODES"."IN_OUT_CITY_LIMITS_DESCR", "PERM_GROUPS"."DIR_SUF", "ADDRESSES"."CITY", "ADDRESSES"."STATE", "ADDRESSES"."ZIP", "LAND_USE_CODES"."LANDUSECODE_DESCR"
-        FROM   ((((("IRIS"."PERM_GROUPS" "PERM_GROUPS" INNER JOIN "IRIS"."PERM_BLDG" "PERM_BLDG" ON ("PERM_GROUPS"."GROUP_NUM"="PERM_BLDG"."GROUP_NUM") AND ("PERM_GROUPS"."GRP_TRANS_NUM"="PERM_BLDG"."PERM_TRANS_NUM")) INNER JOIN "IRIS"."PARCELS" "PARCELS" ON ("PERM_GROUPS"."RPID_LOT"="PARCELS"."RPID_LOT") AND ("PERM_GROUPS"."RPID_MAP"="PARCELS"."RPID_MAP")) INNER JOIN "IRIS"."PERMIT_CENSUS_LAND_USE_CODES" "PERMIT_CENSUS_LAND_USE_CODES" ON "PERM_GROUPS"."GRP_CENSUS_LAND_USE_CODE"="PERMIT_CENSUS_LAND_USE_CODES"."CENSUS_LAND_USE_CODE") INNER JOIN "IRIS"."ADDRESSES" "ADDRESSES" ON (("PERM_GROUPS"."ADDRESS_ID"="ADDRESSES"."ADDRESS_ID") AND ("PARCELS"."RPID_MAP"="ADDRESSES"."RPID_MAP")) AND ("PARCELS"."RPID_LOT"="ADDRESSES"."RPID_LOT")) INNER JOIN "IRIS"."CITY_LIMITS_CODES" "CITY_LIMITS_CODES" ON "PARCELS"."PARC_IN_OUT_CITY_LIMITS"="CITY_LIMITS_CODES"."IN_OUT_CITY_LIMITS") INNER JOIN "IRIS"."LAND_USE_CODES" "LAND_USE_CODES" ON "PARCELS"."PARC_LAND_USE"="LAND_USE_CODES"."LAND_USE_CODE"
-        WHERE  ("PERM_GROUPS"."GRP_STATUS"='A' OR "PERM_GROUPS"."GRP_STATUS"='I' OR "PERM_GROUPS"."GRP_STATUS"='V' ) 
-        AND "PERM_GROUPS"."GRP_ISSUE_DATE"  >= TO_DATE( '#{date}' , 'mm/dd/yyyy')
-      SQL
-  end  
-  
-  def transform 
-
-    result_objects=@db[@sql].all    
-    result_objects.each do |h|
-   ############rename keys to make human friendly
-   h.rewrite(:devplan_devplan_name => :development_plan_name,
-            :grp_issue_date  =>    :issue_date,
-            :grp_proposed_work => :proposed_work,
-            :perm_work_type_code_descr => :work_type_description, 
-            :permit_num => :permit_number,
-            :perm_sq_ft_for_fee => :square_feet,
-            :grp_bldg_num_stories => :number_of_stories,
-            :ncpin => :nc_pin,
-            :perm_cost_of_construction => :cost_of_construction,
-            :grp_cnty_parc_owner_name => :owner_name,
-            :perm_contractor_name => :contractor_name,
-            :contractor_id => :contractor_city_id,
-            :contractor_e_mail => :contractor_email,
-            :rpid_lot => :lot_number,
-            :perm_c_bldg_co_date => :building_co_date,
-            :perm_authorized_work => :authorized_work,
-            :grp_b_num_dwel_units_total => :dwelling_units_total, 
-            :grp_bldg_footprint => :building_footprint,
-            :cnty_acct_num => :county_account_number,
-            :grp_status => :status,
-            :parc_county => :county,
-            :in_out_city_limits_descr => :in_out_city_limits,
-            :census_land_use_code_descr => :land_use_code_description,
-            :landusecode_descr => :land_use_code            
- )
-
-
-    ##############set proper date_type
-           h[:issue_date]=h[:issue_date].to_datetime
-              if !h[:building_co_date].nil? 
-                h[:building_co_date] =  h[:building_co_date].to_datetime
-              end 
-    ##############concatenate owner address fields
-        @owner_add = ' '
-        if !h[:grp_cnty_parc_owner_addr1].nil?  
-          @owner_add = h[:grp_cnty_parc_owner_addr1]
-            if !h[:grp_cnty_parc_owner_addr2].nil?  && !h[:grp_cnty_parc_owner_addr2].include?( h[:grp_cnty_parc_owner_addr1])
-              @owner_add +=  ' ' + h[:grp_cnty_parc_owner_addr2]
-            end
-            o_address = {:owners_address => @owner_add}
-            package = h.merge!(o_address)
-        end
-    ##############concatenate address fields to Location 1 
-          if !h[:street_suite].nil?       #add suite to full address unless nil
-            @suite = 'STE' + ' ' + h[:street_suite].to_s + ' ' 
-          else
-            @suite = ''
-          end
-                                    
-        temp_address = {:address =>(h[:street_num].to_s << ' ' << 
-                                    h[:dir_pre].to_s << ' ' << 
-                                    h[:street_name].to_s << ' ' << 
-                                    h[:street_type].to_s << ' ' << 
-                                    h[:dir_suf].to_s << ' ' << 
-                                    @suite << ' ' <<
-                                    h[:city].to_s <<  " NC  " << 
-                                    h[:zip].to_s ).squeeze(' ')}
-     
-        package = h.merge!(temp_address)
-        print '.'
-        @payload << package 
-
-        @counter+=1    
-
+  def lookup # query iris in groups of 1000 (limit for SQL)
+    @num_arry.each_slice(1000) do |na|
+      nas = na.join(', ')
+      sql = get_sql(nas)
+      result = @db[sql].all
+      result.each do |r|
+          transform(r)
+          @package << r
+          @counter +=1 
+      end      
     end
+      if @package.size == 0
+        LOGGER.info "Nothing to see here!"
+        LOGGER.info "Permit CO dates are all up to date"
+      else
+        export(@package)
+      end  
+  end
 
-   #   response = @client.post(@view_id, @payload)
+  def transform(object)
+    object.rewrite(:permit_num => :permit_number,
+              :perm_c_bldg_co_date => :building_date,
+              :grp_status => :status
+              )
+    object[:building_date] =  object[:building_date].to_datetime 
+  end
 
-      puts response["Errors"].to_s + 'Errors'
-      puts response["Rows Deleted"].to_s + ' Rows Deleted'
-      puts response["Rows Created"].to_s + ' Rows Created'
-      puts response["Rows Updated"].to_s + ' Rows Updated'
-      LOGGER.info "Update complete using permit_up.rb"
-      LOGGER.info "................. #{response["Errors"]} Errors"
-      LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"
-      LOGGER.info "................. #{response["Rows Created"]} Rows Created"
-      LOGGER.info "................. #{response["Rows Updated"]} Rows Updated"
+  def export(set)
+    response = @client.post(@view_id, set)
+    puts response["Errors"].to_s + 'Errors'
+    puts response["Rows Deleted"].to_s + ' Rows Deleted'
+    puts response["Rows Created"].to_s + ' Rows Created' 
+    puts response["Rows Updated"].to_s + ' Rows Updated'
+    LOGGER.info "Permit CO dates updated "
+    LOGGER.info "................. #{response["Errors"]} Errors"
+    LOGGER.info "................. #{response["Rows Deleted"]} Rows Deleted"      
+    LOGGER.info "................. #{response["Rows Created"]} Rows Created"
+    LOGGER.info "................. #{response["Rows Updated"]} Rows Updated"
+  end 
+
+  def get_sql(num) 
+      <<-SQL 
+        SELECT 
+          "PERM_BLDG"."PERMIT_NUM","PERM_GROUPS"."PERM_C_BLDG_CO_DATE","PERM_GROUPS"."GRP_STATUS"
+        FROM   ((((("IRIS"."PERM_GROUPS" "PERM_GROUPS" INNER JOIN "IRIS"."PERM_BLDG" "PERM_BLDG" ON ("PERM_GROUPS"."GROUP_NUM"="PERM_BLDG"."GROUP_NUM") 
+          AND ("PERM_GROUPS"."GRP_TRANS_NUM"="PERM_BLDG"."PERM_TRANS_NUM")) 
+          INNER JOIN "IRIS"."PARCELS" "PARCELS" ON ("PERM_GROUPS"."RPID_LOT"="PARCELS"."RPID_LOT") 
+          AND ("PERM_GROUPS"."RPID_MAP"="PARCELS"."RPID_MAP")) 
+          INNER JOIN "IRIS"."PERMIT_CENSUS_LAND_USE_CODES" "PERMIT_CENSUS_LAND_USE_CODES" 
+          ON "PERM_GROUPS"."GRP_CENSUS_LAND_USE_CODE"="PERMIT_CENSUS_LAND_USE_CODES"."CENSUS_LAND_USE_CODE") 
+          INNER JOIN "IRIS"."ADDRESSES" "ADDRESSES" ON (("PERM_GROUPS"."ADDRESS_ID"="ADDRESSES"."ADDRESS_ID") 
+          AND ("PARCELS"."RPID_MAP"="ADDRESSES"."RPID_MAP")) AND ("PARCELS"."RPID_LOT"="ADDRESSES"."RPID_LOT")) 
+          INNER JOIN "IRIS"."CITY_LIMITS_CODES" "CITY_LIMITS_CODES" ON "PARCELS"."PARC_IN_OUT_CITY_LIMITS"="CITY_LIMITS_CODES"."IN_OUT_CITY_LIMITS") 
+          INNER JOIN "IRIS"."LAND_USE_CODES" "LAND_USE_CODES" ON "PARCELS"."PARC_LAND_USE"="LAND_USE_CODES"."LAND_USE_CODE"
+        WHERE  "PERM_BLDG"."PERMIT_NUM" IN  (#{num}) 
+          AND "PERM_GROUPS"."PERM_C_BLDG_CO_DATE" IS NOT NULL
+      SQL
   end 
 end
  

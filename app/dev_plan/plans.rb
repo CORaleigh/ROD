@@ -77,7 +77,6 @@ def process
       
       @payload << fix
     end 
- puts @payload
     #tocsv
     export
      
@@ -91,54 +90,54 @@ end
       end
     end
   end
-
-
+  
   def get_sql(date)
-      <<-SQL 
-          select NVL(dch.ncpin, ' ') as pin,
-          NVL(d.DEVPLAN_ID, 0) as devplan_id,
-          NVL(d.plan_name, ' ') as plan_name,
-          NVL(d.plan_number, ' ') as plan_number,
-          NVL(d.case_year, ' ') as case_year,
-          NVL(d.plan_type, ' ') as plan_type,
-          NVL(d.major_street, ' ') as major_street,
-          NVL(d.acreage, 0) as acreage,
-          NVL(d.lots_req, 0) as lots_req,
-          NVL(d.lots_apprv, 0) as lots_apprv,
-          NVL(d.lots_rec, 0) as lots_rec,
-          NVL(d.units_req, 0) as units_req,
-          NVL(d.UNITS_APPRV, 0) as units_apprv,
-          NVL(d.SQ_FT_REQ, 0) as sq_ft_req,
-          NVL(d.ZONING, ' ') as zoning,
-          NVL(d.CAC, ' ') as cac,
-          NVL(d.PLANNER, ' ') as planner,
-          NVL(d.OWNER, ' ') as owner,
-          NVL(d.OWNER_PHONE, ' ') as owner_phone,
-          NVL(d.ENGINEER, ' ') as engineer,
-          NVL(d.ENGINEER_PHONE, ' ') as engineer_phone,
-          NVL(TO_CHAR(d.SUBMITTAL_DATE, 'YYYYMMDD'), ' ') as SUBMITTED,
-          NVL(TO_CHAR(d.APPROVAL_DATE, 'YYYYMMDD'), ' ') as APPROVED,
-          CASE d.STATUS WHEN 'A' THEN 'Active'
-          WHEN 'W' THEN 'Withdrawn'
-          WHEN 'P' THEN 'Pending'
-          WHEN 'S' THEN 'Sunset'
-          WHEN 'D' THEN 'Denied'
-          WHEN 'N' THEN 'Review In Progress'
-          ELSE ' ' END as status,
-          NVL(TO_CHAR(d1.update_date, 'YYYYMMDD'), ' ') as UPDATED,
-          NVL(TO_CHAR(d1.insertion_date, 'YYYYMMDD'), ' ') as INSERTED,
-          a.STREET_NUM ||' '|| trim( s.street_dir_pre || ' ' || s.street_name || ' ' || s.street_type) || ', RALEIGH, NC ' || 
-          CASE a.ZIP WHEN '000000' THEN '' ELSE a.ZIP END as address
-          from iris.devplans_view d,
-          (select devplan_id, min(address_id) as address_id, min(ncpin) as ncpin  from iris.devplans_case_history group by devplan_id) dch, 
-          iris.development_plans d1, iris.addresses a,
-          iris.streets s
-          where d.devplan_id = dch.devplan_id and d.devplan_id = d1.devplan_id and a.address_id = dch.address_id 
-          and s.street_id = a.street_id and  d1.update_date  >= TO_DATE( '#{date}' , 'mm/dd/yyyy')
-
-          order by d.submittal_date desc
-      SQL
+    <<-SQL
+    SELECT
+        NVL(dv.DEVPLAN_ID, 0) as devplan_id,
+        NVL(dv.plan_name, ' ') as plan_name,
+        NVL(dv.plan_number, ' ') as plan_number,
+        NVL(dv.case_year, ' ') as case_year,
+        NVL(dv.plan_type, ' ') as plan_type,
+        NVL(dv.major_street, ' ') as major_street,
+        NVL(dv.acreage, 0) as acreage,
+        NVL(dv.lots_req, 0) as lots_req,
+        NVL(dv.lots_apprv, 0) as lots_apprv,
+        NVL(dv.lots_rec, 0) as lots_rec,
+        NVL(dv.units_req, 0) as units_req,
+        NVL(dv.UNITS_APPRV, 0) as units_apprv,
+        NVL(dv.SQ_FT_REQ, 0) as sq_ft_req,
+        NVL(dv.ZONING, ' ') as zoning,
+        NVL(dv.CAC, ' ') as cac,
+        NVL(dv.PLANNER, ' ') as planner,
+        NVL(dv.OWNER, ' ') as owner,
+        NVL(dv.OWNER_PHONE, ' ') as owner_phone,
+        NVL(dv.ENGINEER, ' ') as engineer,
+        NVL(dv.ENGINEER_PHONE, ' ') as engineer_phone,
+        NVL(TO_CHAR(dv.SUBMITTAL_DATE, 'YYYYMMDD'), ' ') as SUBMITTED,
+        NVL(TO_CHAR(dv.APPROVAL_DATE, 'YYYYMMDD'), ' ') as APPROVED,
+        CASE dv.STATUS WHEN 'A' THEN 'Active'
+        WHEN 'W' THEN 'Withdrawn'
+        WHEN 'P' THEN 'Pending'
+        WHEN 'S' THEN 'Sunset'
+        WHEN 'D' THEN 'Denied'
+        WHEN 'N' THEN 'Review In Progress'
+        ELSE ' ' END as status,
+        NVL(TO_CHAR(dp.update_date, 'YYYYMMDD'), ' ') as UPDATED,
+        NVL(TO_CHAR(dp.insertion_date, 'YYYYMMDD'), ' ') as INSERTED,
+        address.address
+        from
+        iris.devplans_view dv, iris.development_plans dp,
+        (select devplan_id, a.STREET_NUM ||' '|| trim( s.street_dir_pre || ' ' || s.street_name || ' ' || s.street_type) || ', RALEIGH, NC ' || 
+                  CASE a.ZIP WHEN '000000' THEN '' ELSE a.ZIP END as address from 
+        (select devplan_id, max(a.address_id) as address_id from iris.devplans_case_history dch, iris.addresses a 
+        where dch.rpid_map = a.rpid_map and dch.rpid_lot = a.rpid_lot group by devplan_id) d1, iris.addresses a, iris.streets s
+        where a.address_id = d1.address_id and a.street_id = s.street_id) address where dv.devplan_id = address.devplan_id 
+        and dv.devplan_id = dp.devplan_id 
+        order by dv.devplan_id desc
+    SQL
   end
+
   
   def export  #process the data and send to Socrata 
       response = @client.post(@view_id, @payload)         #upload to Socrata
@@ -158,3 +157,4 @@ end
 end
 
 ConnectQuery.new(DB).stepper
+

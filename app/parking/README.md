@@ -1,4 +1,4 @@
-#readme.md
+
 
 The parking folder contains scripts for creating, updating and pushing parking space data managed by 
 Duncan Solutions. Monday through friday starting at 7:30am and ending at 5:00pm the duncanQuery.rb will 
