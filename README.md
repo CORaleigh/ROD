@@ -50,10 +50,12 @@ view individual README files for instructions to run the scripts manually
 
 **db**
 
-  - databases go here
+  - databases go here  
+
 **docs**
 
-  random documents for creating a new dataset on Socrata or for use in editing an existing data set. Ex permit_headers.csv is a csv of all of the column names for the permit data set
+  random documents for creating a new dataset on Socrata or for use in editing an existing data set. Ex permit_headers.csv is a csv of all of the column names for the permit data set  
+  
 **lib**
 
     - cal_logger.rb - logger for public meetings calendar script
