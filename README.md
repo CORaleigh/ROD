@@ -48,8 +48,8 @@ view individual README files for instructions to run the scripts manually
     
     - zone.rb
 
-**db**
-  - databases go here  
+**db**  
+    - databases go here  
 
 **docs**
 
