@@ -1,4 +1,4 @@
-#single use script for removing duplicates from the master police data set on Socrata
+#single use script for removing duplicates from the master police data (2013) set on Socrata
 #using a copy of the 2013 data set, this will first remove all rows from the master set for the year 2013
 #the duplicate files will remain but will be updated in the replace method
 #this file can be modified to replace duplicates in other sets
@@ -35,17 +35,15 @@ class FixPolice
     http.read_timeout = 500
 
   end
-  def process
+  def process #switch 
     #purge
-  
     replace
-
   end
 
 
   def purge #remove all 2013 police data
     @payload =[]               
-    csv_data = CSV.read("p2013.csv", "r")
+    csv_data = CSV.read("p2013.csv", "r")   #csv file should be placed in police_fix folder or the path should be changed to reflect another location
     headers = csv_data.shift.map {|i| i.to_s }
     string_data = csv_data.map {|row| row.map {|cell| cell.to_s } }
     @payload = string_data.map {|row| Hash[*headers.zip(row).flatten] }
@@ -59,7 +57,7 @@ class FixPolice
 
   def replace #repost all police 2013 data
     @payload = []
-    csv_data = CSV.read("p2013.csv", "r")
+    csv_data = CSV.read("p2013.csv", "r")    #csv file should be placed in police_fix folder or the path should be changed to reflect another location
     headers = csv_data.shift.map {|i| i.to_s }
     string_data = csv_data.map {|row| row.map {|cell| cell.to_s } }
     @payload = string_data.map {|row| Hash[*headers.zip(row).flatten] }

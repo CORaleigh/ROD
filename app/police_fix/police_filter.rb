@@ -1,4 +1,4 @@
-#collection of methods filters for police data set to bring into compliance with police policies
+#collection of methods & filters for police data set to bring into compliance with police data policies
 #this is a loose collection and is not intended to run as a single script
 
 require 'net/https'
@@ -14,7 +14,7 @@ require_relative '../../lib/defaults.rb'
 require_relative '../../lib/helpers.rb'    
 
 class FixPolice
-
+initialize process 
   def initialize 
     @client = SODA::Client.new({
      :domain => 'data.raleighnc.gov',
@@ -33,19 +33,6 @@ class FixPolice
     @csv_name = 'csv_output_name.csv' # change this to the desired output name for your csv
     http = Net::HTTP.new(@host, @port) #fix timeout issues
     http.read_timeout = 500
-    
-  def process #switch for running parts of script
-     #beat_to_district  #convert beat to districts using beat_lookup
-     #filters           #filter on (@filter) strings to remove geo from police dataset
-     #to_csv            #convert hash to csv and write to a file
-     #split_csv_coords  #split geo coordinates into lat and lon columns
-     join_csv_coords
-     #load_csv          #load a csv file and convert to hash
-     #load_psv          #load a psv (pipe seperted value) and convert to hash
-     #purge             #load a csv file, convert to array of hashs, add '{":deleted" => true}' to each hash and export to socrata !caution this is a destructive method.
-     #replace           #load a csv file, convert to array of hashes and post to Socrata. This will not cause any duplications.
-
-  end
 
    # police LCR DESC strings to filter on  
   @filter = ["sex", "sex offense/incest", "sex offense/all other", "sex offense/all other sex offenses", "human trafficking/commercial sex acts",
@@ -62,6 +49,18 @@ class FixPolice
    "family offenses/nonviolent", "miscellaneous/overdose death", "engaging in affray/juvenile", "juvenile/suspicion", "rape by force", 
    "rape/attempted", "traffic/citizen request"                             
    ]
+  end
+
+  def process #switch for running parts of script
+     #beat_to_district  #convert beat to districts using beat_lookup
+     #filters           #filter on (@filter) strings to remove geo from police dataset
+     #to_csv            #convert hash to csv and write to a file
+     #split_csv_coords  #split geo coordinates into lat and lon columns
+     join_csv_coords
+     #load_csv          #load a csv file and convert to hash
+     #load_psv          #load a psv (pipe seperted value) and convert to hash
+     #purge             #load a csv file, convert to array of hashs, add '{":deleted" => true}' to each hash and export to socrata !caution this is a destructive method.
+     #replace           #load a csv file, convert to array of hashes and post to Socrata. This will not cause any duplications.
   end
 
   def beat_lookup(filter)  #beat to district conversion lookup 
