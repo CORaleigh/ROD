@@ -4,7 +4,7 @@ require 'json'
 require 'crack'
 require 'sqlite3'
 a=0
-db=SQLite3::Database.new('parking.db')
+db=SQLite3::Database.new('../../db/parking.db')
 db.execute("create table Spaces (id INTEGER PRIMARY KEY, last_active TEXT, lat DECIMAL(10,6), long DECIMAL(10,6), street_name TEXT, bay_number INTEGER, zone INTEGER,
                                  rate INTEGER, time_limit INTEGER, hours TEXT, last_update TEXT, status TEXT, expires_at TEXT, cumulative_total DECIMAL(19, 2))")
 pspace = Crack::JSON.parse(open("space.json").read).to_hash

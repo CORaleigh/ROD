@@ -11,14 +11,14 @@ require 'active_record'
 require 'nokogiri'
 require 'open-uri'
 require 'sqlite3'
-require_relative 'logger.rb'
+require_relative '../../lib/parking_logger.rb'
 require_relative '../../lib/defaults.rb'
  
 
 
 DB=ActiveRecord::Base.establish_connection(
  :adapter  => 'sqlite3',
- :database => 'parking.db'
+ :database => '../../db/parking.db'
 )
  
 class Space < ActiveRecord::Base
