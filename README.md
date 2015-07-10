@@ -44,6 +44,13 @@ view individual README files for instructions to run the scripts manually
 
     - police_filter.rb  
     - police_fix.rb
+
+  **[see\_click\_fix](app.see_click_fix/README.md) - ETL for see click fix issues
+
+
+    - scf_build2.rb
+    - scf_make2.rb
+    
   **[zoning](app/zoning/README.md)**   - re-zoning data
     
     - zone.rb
