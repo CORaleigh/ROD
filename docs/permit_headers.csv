@@ -18,7 +18,7 @@
  county, 
  in_out_city_limits, 
  land_use_code, 
- address
+ address,
  building_footprint,
  census_land_use_code,
  contractor_email,

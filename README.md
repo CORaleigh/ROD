@@ -1,12 +1,13 @@
 
 ### Raleigh Open Data   
 ##### A collection of Ruby scripts for automating ETL methods on Raleigh data sets
-
---- 
-
-! Always create a working data set and change the _@view\_id_ to the working sets XXXX-XXXX code when modifying data sets that are in production !  
-
+ 
 ---
+#### Install / Run
+>git clone git@github.com:CORaleigh/ROD.git  
+bundle install  
+view individual README files for instructions to run the scripts manually  
+>#####! Always create a working data set and change the _@view\_id_ to the working set's XXXX-XXXX code when modifying data sets that are in production !   
 
 #### Files
 **app** - links to each data set's README file
@@ -49,10 +50,10 @@
 
 **db**
 
-	- databases go here
+  - databases go here
 **docs**
 
-	random documents for creating a new dataset on Socrata or for use in editing an existing data set. Ex permit_headers.csv is a csv of all of the column names for the permit data set
+  random documents for creating a new dataset on Socrata or for use in editing an existing data set. Ex permit_headers.csv is a csv of all of the column names for the permit data set
 **lib**
 
     - cal_logger.rb - logger for public meetings calendar script
@@ -68,7 +69,7 @@
 
 **[log](log)** - log files for all scripts
 
-**shell scripts** - shell scripts run from a cron job to update the data sets	
+**shell scripts** - shell scripts run from a cron job to update the data sets 
 
     - calendar.sh
     - daily_permits.sh
@@ -76,6 +77,5 @@
     - m311.sh
     - monthly_zoning.sh
     - scf.sh
-
 
 
