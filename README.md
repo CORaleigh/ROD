@@ -86,5 +86,6 @@ view individual README files for instructions to run the scripts manually
     - m311.sh
     - monthly_zoning.sh
     - scf.sh
+    - permit_co.sh
 
 
