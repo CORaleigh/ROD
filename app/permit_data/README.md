@@ -47,6 +47,6 @@ This will update the _building\_co\_date_ and _status_ fields for all permits in
 
 --- 
 ##### [test\_permit\_up.rb](permit_chunk.rb) -  Same as permit\_up.rb but uses IRIS test db
-##### [test\_permit\_chunk.rb](permit_chunk.rb) - Same as test\_permit\_chunk.rb but uses IRIS test db
+##### [test\_permit\_chunk.rb](permit_chunk.rb) - Same as permit\_chunk.rb but uses IRIS test db
  
 
