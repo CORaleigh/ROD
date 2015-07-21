@@ -71,6 +71,7 @@ class MobileUp
     set["WorkRequests"].each do |object|  #parse response and modify 'completed' & 'flagged' items
        if object["statusname"] == 'Flagged' || object ["statusname"] == "Completed" #only get objects with 'flagged' or 'completed' status
            #rename column values
+           @addr=""
            object.rewrite( "workrequestid" => "Id",
                            "worktypename" => "Work Type",
                            "posteddate" => "Post Date",
@@ -104,8 +105,8 @@ class MobileUp
            end 
 
            #look up owner name and address and add to hash   
-           addr =   object["Violation Address"]     
-           lookup(addr)
+           @addr =   object["Violation Address"]     
+           lookup(@addr)
            object["Property Owner Name"] = @ownername 
            object["Property Owner Address"] = @owneradd
            object["City1"] = @city1
@@ -147,6 +148,9 @@ class MobileUp
   end
 
   def lookup(add)    #clean up address and query arcgis rest service for name and addresses
+    @ownername = ""
+    @owneradd = ""
+    @city1 = ""
       normadd=Normalic::Address.parse("#{add}")
       nadds=(normadd.to_s).gsub(/[.,]/,'')
 
