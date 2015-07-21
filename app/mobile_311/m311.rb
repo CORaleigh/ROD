@@ -159,11 +159,13 @@ class MobileUp
           'values' => "['#{nadds}']",
           'f' => 'json' }
       info = data["Accounts"]
-      info.each do |p|
-        @ownername = p["owner"]
-        @owneradd = p["mailAddress1"]
-        @city1 = p["mailAddress2"]
-      end                              
+      unless info.nil?
+        info.each do |p|
+          @ownername = p["owner"]
+          @owneradd = p["mailAddress1"]
+          @city1 = p["mailAddress2"]
+        end
+      end                                
   end
 
   def export #push all to Socrata
