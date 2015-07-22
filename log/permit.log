@@ -1024,3 +1024,126 @@ I, [2015-06-19T08:50:29.694110 #24607]  INFO -- : ................. 2 Errors
 I, [2015-06-19T08:50:29.694159 #24607]  INFO -- : ................. 0 Rows Deleted
 I, [2015-06-19T08:50:29.694199 #24607]  INFO -- : ................. 42 Rows Created
 I, [2015-06-19T08:50:29.694237 #24607]  INFO -- : ................. 54 Rows Updated
+I, [2015-07-12T07:50:09.089933 #3009]  INFO -- : Update for building permits CO date initiated.
+I, [2015-07-12T07:50:22.955623 #3009]  INFO -- : Permit CO dates updated 
+I, [2015-07-12T07:50:22.956037 #3009]  INFO -- : ................. 0 Errors
+I, [2015-07-12T07:50:22.956088 #3009]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-12T07:50:22.956126 #3009]  INFO -- : ................. 0 Rows Created
+I, [2015-07-12T07:50:22.956179 #3009]  INFO -- : ................. 92 Rows Updated
+I, [2015-07-12T08:50:04.196521 #3338]  INFO -- : Update initiated. Start date 07/09/2015
+I, [2015-07-12T08:50:10.271997 #3338]  INFO -- : Update complete using permit_up.rb
+I, [2015-07-12T08:50:10.272404 #3338]  INFO -- : ................. 0 Errors
+I, [2015-07-12T08:50:10.272452 #3338]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-12T08:50:10.272487 #3338]  INFO -- : ................. 23 Rows Created
+I, [2015-07-12T08:50:10.272521 #3338]  INFO -- : ................. 65 Rows Updated
+I, [2015-07-13T07:50:03.584209 #5607]  INFO -- : Update for building permits CO date initiated.
+I, [2015-07-13T07:50:39.503741 #5607]  INFO -- : Nothing to see here!
+I, [2015-07-13T07:50:39.504364 #5607]  INFO -- : Permit CO dates are all up to date
+I, [2015-07-13T08:50:04.144522 #5997]  INFO -- : Update initiated. Start date 07/10/2015
+I, [2015-07-13T08:50:08.317352 #5997]  INFO -- : Update complete using permit_up.rb
+I, [2015-07-13T08:50:08.317494 #5997]  INFO -- : ................. 0 Errors
+I, [2015-07-13T08:50:08.317541 #5997]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-13T08:50:08.317577 #5997]  INFO -- : ................. 3 Rows Created
+I, [2015-07-13T08:50:08.317615 #5997]  INFO -- : ................. 26 Rows Updated
+I, [2015-07-14T07:50:04.128138 #9599]  INFO -- : Update for building permits CO date initiated.
+I, [2015-07-14T07:51:16.821064 #9599]  INFO -- : Permit CO dates updated 
+I, [2015-07-14T07:51:16.821548 #9599]  INFO -- : ................. 0 Errors
+I, [2015-07-14T07:51:16.821597 #9599]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-14T07:51:16.821646 #9599]  INFO -- : ................. 0 Rows Created
+I, [2015-07-14T07:51:16.821694 #9599]  INFO -- : ................. 10 Rows Updated
+I, [2015-07-14T08:50:05.055000 #10000]  INFO -- : Update initiated. Start date 07/11/2015
+I, [2015-07-14T08:50:31.166877 #10000]  INFO -- : Update complete using permit_up.rb
+I, [2015-07-14T08:50:31.167455 #10000]  INFO -- : ................. 0 Errors
+I, [2015-07-14T08:50:31.167525 #10000]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-14T08:50:31.167563 #10000]  INFO -- : ................. 31 Rows Created
+I, [2015-07-14T08:50:31.167598 #10000]  INFO -- : ................. 3 Rows Updated
+I, [2015-07-15T07:50:03.835749 #13196]  INFO -- : Update for building permits CO date initiated.
+I, [2015-07-15T07:50:26.125540 #13196]  INFO -- : Permit CO dates updated 
+I, [2015-07-15T07:50:26.125957 #13196]  INFO -- : ................. 0 Errors
+I, [2015-07-15T07:50:26.126005 #13196]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-15T07:50:26.126049 #13196]  INFO -- : ................. 0 Rows Created
+I, [2015-07-15T07:50:26.126083 #13196]  INFO -- : ................. 14 Rows Updated
+I, [2015-07-15T08:50:05.836304 #13604]  INFO -- : Update initiated. Start date 07/12/2015
+I, [2015-07-15T08:50:12.981902 #13604]  INFO -- : Update complete using permit_up.rb
+I, [2015-07-15T08:50:12.982264 #13604]  INFO -- : ................. 0 Errors
+I, [2015-07-15T08:50:12.982312 #13604]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-15T08:50:12.982348 #13604]  INFO -- : ................. 35 Rows Created
+I, [2015-07-15T08:50:12.982381 #13604]  INFO -- : ................. 34 Rows Updated
+I, [2015-07-16T07:50:04.002964 #16789]  INFO -- : Update for building permits CO date initiated.
+I, [2015-07-16T07:50:50.361897 #16789]  INFO -- : Permit CO dates updated 
+I, [2015-07-16T07:50:50.362467 #16789]  INFO -- : ................. 0 Errors
+I, [2015-07-16T07:50:50.362529 #16789]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-16T07:50:50.362568 #16789]  INFO -- : ................. 0 Rows Created
+I, [2015-07-16T07:50:50.362603 #16789]  INFO -- : ................. 2 Rows Updated
+I, [2015-07-16T08:50:05.409220 #17219]  INFO -- : Update initiated. Start date 07/13/2015
+I, [2015-07-16T08:50:12.067152 #17219]  INFO -- : Update complete using permit_up.rb
+I, [2015-07-16T08:50:12.067575 #17219]  INFO -- : ................. 0 Errors
+I, [2015-07-16T08:50:12.067624 #17219]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-16T08:50:12.067661 #17219]  INFO -- : ................. 28 Rows Created
+I, [2015-07-16T08:50:12.067695 #17219]  INFO -- : ................. 69 Rows Updated
+I, [2015-07-17T07:50:03.470096 #20391]  INFO -- : Update for building permits CO date initiated.
+I, [2015-07-17T07:50:57.150530 #20391]  INFO -- : Permit CO dates updated 
+I, [2015-07-17T07:50:57.151179 #20391]  INFO -- : ................. 0 Errors
+I, [2015-07-17T07:50:57.151238 #20391]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-17T07:50:57.151273 #20391]  INFO -- : ................. 0 Rows Created
+I, [2015-07-17T07:50:57.151304 #20391]  INFO -- : ................. 63 Rows Updated
+I, [2015-07-17T08:50:06.394662 #20825]  INFO -- : Update initiated. Start date 07/14/2015
+I, [2015-07-17T08:50:16.527000 #20825]  INFO -- : Update complete using permit_up.rb
+I, [2015-07-17T08:50:16.527411 #20825]  INFO -- : ................. 0 Errors
+I, [2015-07-17T08:50:16.527460 #20825]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-17T08:50:16.527495 #20825]  INFO -- : ................. 30 Rows Created
+I, [2015-07-17T08:50:16.527529 #20825]  INFO -- : ................. 64 Rows Updated
+I, [2015-07-18T07:50:03.141292 #23779]  INFO -- : Update for building permits CO date initiated.
+I, [2015-07-18T07:50:29.436981 #23779]  INFO -- : Permit CO dates updated 
+I, [2015-07-18T07:50:29.437489 #23779]  INFO -- : ................. 0 Errors
+I, [2015-07-18T07:50:29.437536 #23779]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-18T07:50:29.437570 #23779]  INFO -- : ................. 0 Rows Created
+I, [2015-07-18T07:50:29.437601 #23779]  INFO -- : ................. 8 Rows Updated
+I, [2015-07-18T08:50:04.333233 #24108]  INFO -- : Update initiated. Start date 07/15/2015
+I, [2015-07-18T08:50:11.224652 #24108]  INFO -- : Update complete using permit_up.rb
+I, [2015-07-18T08:50:11.225286 #24108]  INFO -- : ................. 1 Errors
+I, [2015-07-18T08:50:11.225336 #24108]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-18T08:50:11.225374 #24108]  INFO -- : ................. 25 Rows Created
+I, [2015-07-18T08:50:11.225409 #24108]  INFO -- : ................. 58 Rows Updated
+I, [2015-07-19T07:50:03.955127 #26185]  INFO -- : Update for building permits CO date initiated.
+I, [2015-07-19T07:50:17.943721 #26185]  INFO -- : Nothing to see here!
+I, [2015-07-19T07:50:17.944385 #26185]  INFO -- : Permit CO dates are all up to date
+I, [2015-07-19T08:50:12.393684 #26481]  INFO -- : Update initiated. Start date 07/16/2015
+I, [2015-07-19T08:50:22.356467 #26481]  INFO -- : Update complete using permit_up.rb
+I, [2015-07-19T08:50:22.356929 #26481]  INFO -- : ................. 1 Errors
+I, [2015-07-19T08:50:22.356980 #26481]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-19T08:50:22.357019 #26481]  INFO -- : ................. 0 Rows Created
+I, [2015-07-19T08:50:22.357054 #26481]  INFO -- : ................. 55 Rows Updated
+I, [2015-07-20T07:50:03.924701 #28807]  INFO -- : Update for building permits CO date initiated.
+I, [2015-07-20T07:51:23.390414 #28807]  INFO -- : Nothing to see here!
+I, [2015-07-20T07:51:23.391333 #28807]  INFO -- : Permit CO dates are all up to date
+I, [2015-07-20T08:50:05.142728 #29197]  INFO -- : Update initiated. Start date 07/17/2015
+I, [2015-07-20T08:50:10.993622 #29197]  INFO -- : Update complete using permit_up.rb
+I, [2015-07-20T08:50:10.994122 #29197]  INFO -- : ................. 1 Errors
+I, [2015-07-20T08:50:10.994174 #29197]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-20T08:50:10.994213 #29197]  INFO -- : ................. 3 Rows Created
+I, [2015-07-20T08:50:10.994249 #29197]  INFO -- : ................. 26 Rows Updated
+I, [2015-07-21T07:50:03.818975 #1594]  INFO -- : Update for building permits CO date initiated.
+I, [2015-07-21T07:51:35.283520 #1594]  INFO -- : Permit CO dates updated 
+I, [2015-07-21T07:51:35.283965 #1594]  INFO -- : ................. 0 Errors
+I, [2015-07-21T07:51:35.284018 #1594]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-21T07:51:35.284058 #1594]  INFO -- : ................. 0 Rows Created
+I, [2015-07-21T07:51:35.284090 #1594]  INFO -- : ................. 4 Rows Updated
+I, [2015-07-21T08:50:05.331862 #2021]  INFO -- : Update initiated. Start date 07/18/2015
+I, [2015-07-21T08:50:13.800657 #2021]  INFO -- : Update complete using permit_up.rb
+I, [2015-07-21T08:50:13.801084 #2021]  INFO -- : ................. 0 Errors
+I, [2015-07-21T08:50:13.801135 #2021]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-21T08:50:13.801170 #2021]  INFO -- : ................. 36 Rows Created
+I, [2015-07-21T08:50:13.801204 #2021]  INFO -- : ................. 3 Rows Updated
+I, [2015-07-22T07:50:05.058274 #5279]  INFO -- : Update for building permits CO date initiated.
+I, [2015-07-22T07:50:25.599226 #5279]  INFO -- : Permit CO dates updated 
+I, [2015-07-22T07:50:25.599706 #5279]  INFO -- : ................. 0 Errors
+I, [2015-07-22T07:50:25.599758 #5279]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-22T07:50:25.599846 #5279]  INFO -- : ................. 0 Rows Created
+I, [2015-07-22T07:50:25.599900 #5279]  INFO -- : ................. 64 Rows Updated
+I, [2015-07-22T08:50:06.988859 #5685]  INFO -- : Update initiated. Start date 07/19/2015
+I, [2015-07-22T08:50:14.173193 #5685]  INFO -- : Update complete using permit_up.rb
+I, [2015-07-22T08:50:14.173573 #5685]  INFO -- : ................. 0 Errors
+I, [2015-07-22T08:50:14.173628 #5685]  INFO -- : ................. 0 Rows Deleted
+I, [2015-07-22T08:50:14.173664 #5685]  INFO -- : ................. 23 Rows Created
+I, [2015-07-22T08:50:14.173697 #5685]  INFO -- : ................. 39 Rows Updated
