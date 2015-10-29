@@ -24,3 +24,4 @@ Gemfile.lock
 #scf.sh
 # ignore folder - stash folder 
 /app/git_ignore
+.DS_Store
