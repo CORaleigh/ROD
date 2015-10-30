@@ -22,34 +22,34 @@ require_relative '../../lib/helpers.rb'
 class MobileUp 
 
   def initialize
-      @_timedelta = ARGV[0] ? (Integer(ARGV[0]) + 1).day : 1.day
-      @client = SODA::Client.new({                  #repo on data.raleighnc.gov
-        :domain => 'data.raleighnc.gov',
-        :app_token => configatron.app_token,
-        :username => configatron.client_username,
-        :password => configatron.client_pass,
-        :content_type => 'text/plain',
-        :mime_type => 'JSON',
-        :ignore_ssl => true }) 
-      @view_id = "h5i3-8nha"
+    @_timedelta = ARGV[0] ? (Integer(ARGV[0]) + 1).day : 1.day
+    @client = SODA::Client.new({                  #repo on data.raleighnc.gov
+      :domain => 'data.raleighnc.gov',
+      :app_token => configatron.app_token,
+      :username => configatron.client_username,
+      :password => configatron.client_pass,
+      :content_type => 'text/plain',
+      :mime_type => 'JSON',
+      :ignore_ssl => true }) 
+    @view_id = "h5i3-8nha"
+   
+    @client_2 = SODA::Client.new({                #repo on corecon.demo.socrata.com 
+      :domain => 'corecon.demo.socrata.com',
+      :app_token => configatron.app_token,
+      :username => configatron.client_username,
+      :password => configatron.client_pass,
+      :content_type => 'text/plain',
+      :mime_type => 'JSON',
+      :ignore_ssl => true }) 
+    @view_id_2 = "2uyt-2iv6"  
      
-      @client_2 = SODA::Client.new({                #repo on corecon.demo.socrata.com 
-        :domain => 'corecon.demo.socrata.com',
-        :app_token => configatron.app_token,
-        :username => configatron.client_username,
-        :password => configatron.client_pass,
-        :content_type => 'text/plain',
-        :mime_type => 'JSON',
-        :ignore_ssl => true }) 
-      @view_id_2 = "2uyt-2iv6"  
-       
-      @package=[]
-      @owneradd=[]
-      get_token 
-      @base_image_url = "http://map2.Mobile311.com/Mobile311/Files/File.aspx?id="
-      @date_today = (Time.now + 1.day).strftime("%Y-%m-%d  %H:%M:%S")
-      @from_date = (Time.now - @_timedelta).strftime("%Y-%m-%d  %H:%M:%S")
-      @delete_counter = 0
+    @package=[]
+    @owneradd=[]
+    get_token 
+    @base_image_url = "http://map2.Mobile311.com/Mobile311/Files/File.aspx?id="
+    @date_today = (Time.now + 1.day).strftime("%Y-%m-%d  %H:%M:%S")
+    @from_date = (Time.now - @_timedelta).strftime("%Y-%m-%d  %H:%M:%S")
+    @delete_counter = 0
   end
  
   def get_token  #get token from mobile311 for inclusion in other requests
@@ -70,79 +70,79 @@ class MobileUp
     set=JSON.parse(xml_res)
     
     set["WorkRequests"].each do |object|  #parse response and modify 'completed' & 'flagged' items
-       if object["statusname"] == 'Flagged' || object ["statusname"] == "Completed" #only get objects with 'flagged' or 'completed' status
-           #rename column values
-           @addr=""
-           object.rewrite( "workrequestid" => "Id",
-                           "worktypename" => "Work Type",
-                           "posteddate" => "Post Date",
-                           "collecteddate" => "Date Flagged",
-                           "modifieddate" => "Modified Date",
-                           "statusname" => "Status",
-                           "latitude" => "Latitude",
-                           "longitude" => "Longitude",
-                           "description" => "Description",
-                           "comments" => "Comments",
-                           "priority" => "Priority",
-                           "address" => "Violation Address"
+    if object["statusname"] == 'Flagged' || object ["statusname"] == "Completed" #only get objects with 'flagged' or 'completed' status
+      #rename column values
+      @addr=""
+      object.rewrite( "workrequestid" => "Id",
+                      "worktypename" => "Work Type",
+                      "posteddate" => "Post Date",
+                      "collecteddate" => "Date Flagged",
+                      "modifieddate" => "Modified Date",
+                      "statusname" => "Status",
+                      "latitude" => "Latitude",
+                      "longitude" => "Longitude",
+                      "description" => "Description",
+                      "comments" => "Comments",
+                      "priority" => "Priority",
+                      "address" => "Violation Address"
 
-                        )
-           #add empty keys => values to object 
-           object["Property Owner Name"] = " "
-           object["Property Owner Address"] = " "
-           object["City1"] = " " 
-           temp_flagged ={"Flagged By" => (object["username"])}
-           object.merge!(temp_flagged)
-           
-           #fix date objects. Uses date_fixer helper in lib/helpers.rb - converts timestamp from milliseconds from jan 1 1970 to real date-time and adjusts for time zone (-4 hours)
-           unless object["Post Date"].nil?
-              object["Post Date"] = date_fixer(object["Post Date"]) 
-           end
-           unless object["Date Flagged"].nil?
-              object["Date Flagged"] = date_fixer(object["Date Flagged"])
-           end
-           unless object["Modified Date"].nil?
-              object["Modified Date"] = date_fixer(object["Modified Date"])
-           end 
-
-           #look up owner name and address and add to hash   
-           @addr =   object["Violation Address"]     
-           lookup(@addr)
-           object["Property Owner Name"] = @ownername 
-           object["Property Owner Address"] = @owneradd
-           object["City1"] = @city1
-            
-           #fix irritating (null) for comments key
-           if object["Comments"] == "(null)"
-              object["Comments"] = " "
-            end
-
-           #add photo url if exists
-            if object["hasphoto"] == true
-              photo_url = @base_image_url + object["Id"].to_s
-              photo = {"Photo" => "#{photo_url}"}
-            else
-              photo = {"Photo" => " "}
-            end
-            object.merge!(photo)
-
-           #strip extranious fields from object
-           object.except!( "authorized","hasphoto","gislayer","uniqueclientid","color","clientname","type","pointy","pointx","hyperlink",
-                   "clientid","totalrecords","addresssource","assetid","guid","requesttitle","worktypeid","userid", "statusid",
-                   "assigneduserids", "workgroupname", "longtitude","citizenrequest","citizenphonenumber","citizenemail","citizenfirstname","citizenlastname", "workrequestemployees",
-                    "workrequestequipment", "workrequestmaterials", "city", "state", "zip", "customvalues", "address","username","citizenrequest")
+                    )
+        #add empty keys => values to object 
+        object["Property Owner Name"] = " "
+        object["Property Owner Address"] = " "
+        object["City1"] = " " 
+        temp_flagged ={"Flagged By" => (object["username"])}
+        object.merge!(temp_flagged)
          
-         elsif object["statusname"] == 'Deleted'  #create new hash object with id and deleted flag to remove from socrata
-            @id = object["workrequestid"] 
-            object.clear
-            delete_object_hash = {"Id" => @id,
-                                  ":deleted" =>  true}
-            object.merge!(delete_object_hash)
-            @delete_counter += 1
-         end
-          #package it all up
-          print '.'
-          @package << object.to_hash                
+        #fix date objects. Uses date_fixer helper in lib/helpers.rb - converts timestamp from milliseconds from jan 1 1970 to real date-time and adjusts for time zone (-4 hours)
+        unless object["Post Date"].nil?
+            object["Post Date"] = date_fixer(object["Post Date"]) 
+        end
+        unless object["Date Flagged"].nil?
+            object["Date Flagged"] = date_fixer(object["Date Flagged"])
+        end
+        unless object["Modified Date"].nil?
+            object["Modified Date"] = date_fixer(object["Modified Date"])
+        end 
+
+        #look up owner name and address and add to hash   
+        @addr =   object["Violation Address"]     
+        lookup(@addr)
+        object["Property Owner Name"] = @ownername 
+        object["Property Owner Address"] = @owneradd
+        object["City1"] = @city1
+          
+        #fix irritating (null) for comments key
+        if object["Comments"] == "(null)"
+          object["Comments"] = " "
+        end
+
+        #add photo url if exists
+        if object["hasphoto"] == true
+          photo_url = @base_image_url + object["Id"].to_s
+          photo = {"Photo" => "#{photo_url}"}
+        else
+          photo = {"Photo" => " "}
+        end
+        object.merge!(photo)
+
+        #strip extranious fields from object
+        object.except!( "authorized","hasphoto","gislayer","uniqueclientid","color","clientname","type","pointy","pointx","hyperlink",
+                 "clientid","totalrecords","addresssource","assetid","guid","requesttitle","worktypeid","userid", "statusid",
+                 "assigneduserids", "workgroupname", "longtitude","citizenrequest","citizenphonenumber","citizenemail","citizenfirstname","citizenlastname", "workrequestemployees",
+                 "workrequestequipment", "workrequestmaterials", "city", "state", "zip", "customvalues", "address","username","citizenrequest")
+       
+      elsif object["statusname"] == 'Deleted'  #create new hash object with id and deleted flag to remove from socrata
+        @id = object["workrequestid"] 
+        object.clear
+        delete_object_hash = {"Id" => @id,
+                              ":deleted" =>  true}
+        object.merge!(delete_object_hash)
+        @delete_counter += 1
+      end
+      #package it all up
+      print '.'
+      @package << object.to_hash                
       
     end  
     export                          
@@ -170,9 +170,9 @@ class MobileUp
   end
 
   def export #push all to Socrata
-      counter = 0
-      clients = {@client => @view_id, @client_2 => @view_id_2}
-      clients.each do |client, view_id|
+    counter = 0
+    clients = {@client => @view_id, @client_2 => @view_id_2}
+    clients.each do |client, view_id|
       response = client.post(view_id, @package)         #upload to Socrata @ data.raleighnc.gov
       puts
       if counter == 0 
