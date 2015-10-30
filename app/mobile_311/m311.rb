@@ -21,7 +21,8 @@ require_relative '../../lib/helpers.rb'
 
 class MobileUp 
 
-  def initialize 
+  def initialize
+      @_timedelta = ARGV[0] ? (ARGV[0] + 1).day : 1.day
       @client = SODA::Client.new({                  #repo on data.raleighnc.gov
         :domain => 'data.raleighnc.gov',
         :app_token => configatron.app_token,
@@ -47,7 +48,7 @@ class MobileUp
       get_token 
       @base_image_url = "http://map2.Mobile311.com/Mobile311/Files/File.aspx?id="
       @date_today = (Time.now + 1.day).strftime("%Y-%m-%d  %H:%M:%S")
-      @from_date = (Time.now - 1.days).strftime("%Y-%m-%d  %H:%M:%S")
+      @from_date = (Time.now - @_timedelta).strftime("%Y-%m-%d  %H:%M:%S")
       @delete_counter = 0
   end
  
