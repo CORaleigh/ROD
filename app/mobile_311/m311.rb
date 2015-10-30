@@ -22,7 +22,7 @@ require_relative '../../lib/helpers.rb'
 class MobileUp 
 
   def initialize
-      @_timedelta = ARGV[0] ? (ARGV[0] + 1).day : 1.day
+      @_timedelta = ARGV[0] ? (Integer(ARGV[0]) + 1).day : 1.day
       @client = SODA::Client.new({                  #repo on data.raleighnc.gov
         :domain => 'data.raleighnc.gov',
         :app_token => configatron.app_token,
