@@ -93,7 +93,7 @@ end
   
   def get_sql(date)
     <<-SQL
-    SELECT
+  SELECT
         NVL(dv.DEVPLAN_ID, 0) as devplan_id,
         NVL(dv.plan_name, ' ') as plan_name,
         NVL(dv.plan_number, ' ') as plan_number,
@@ -127,13 +127,17 @@ end
         NVL(TO_CHAR(dp.insertion_date, 'YYYYMMDD'), ' ') as INSERTED,
         address.address
         from
-        iris.devplans_view dv, iris.development_plans dp,
-        (select devplan_id, a.STREET_NUM ||' '|| trim( s.street_dir_pre || ' ' || s.street_name || ' ' || s.street_type) || ', RALEIGH, NC ' || 
-                  CASE a.ZIP WHEN '000000' THEN '' ELSE a.ZIP END as address from 
-        (select devplan_id, max(a.address_id) as address_id from iris.devplans_case_history dch, iris.addresses a 
-        where dch.rpid_map = a.rpid_map and dch.rpid_lot = a.rpid_lot group by devplan_id) d1, iris.addresses a, iris.streets s
-        where a.address_id = d1.address_id and a.street_id = s.street_id) address where dv.devplan_id = address.devplan_id 
-        and dv.devplan_id = dp.devplan_id 
+        iris.devplans_view dv left join
+        iris.development_plans dp on dv.devplan_id = dp.devplan_id,
+        (
+          select devplan_id, a.STREET_NUM ||' '|| trim( s.street_dir_pre || ' ' || s.street_name || ' ' || s.street_type) || ', RALEIGH, NC ' ||
+                  CASE a.ZIP WHEN '000000' THEN '' ELSE a.ZIP END as address 
+                  from
+                    (select devplan_id, max(a.address_id) as address_id from iris.devplans_case_history dch 
+                    left join iris.addresses a on dch.rpid_map = a.rpid_map and dch.rpid_lot = a.rpid_lot
+                    group by devplan_id) d1 left join iris.addresses a on  a.address_id = d1.address_id left join iris.streets s on  a.street_id = s.street_id
+        ) address 
+        where dv.devplan_id = address.devplan_id
         order by dv.devplan_id desc
     SQL
   end
