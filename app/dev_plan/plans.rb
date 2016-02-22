@@ -1,5 +1,5 @@
 #development plans
-#https://data.raleighnc.gov/Urban-Planning/Development-Plans/4fws-529h
+#https://data.raleighnc.gov/dataset/Development-Plans/hyba-m4ki
 
 
 require 'net/https'
