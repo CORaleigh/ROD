@@ -1,11 +1,11 @@
 ### Public Meetings Calendar
 ##### Description 
-Public Meetings calendar maintained by The Public Affairs department
+Public Meetings Google calendar maintained by The Public Affairs department.
 
 ##### Links  
- [Re-Zoning Requests on Socrata](https://data.raleighnc.gov/Urban-Planning/Re-Zoning-Requests/k4is-g3ap)
+ [Public Calendar on Socrata](https://data.raleighnc.gov/d/snpm-8ugp)
 ##### Files  
-#### [zone.rb](zone.rb)
+#### [public_meetings_cal.rb](public_meetings_cal.rb)
 
     - initialize  - Sets up soda client and global variables
     - process  - Query IRIS, make date fields more human friendly, package up for Socrata
@@ -13,6 +13,6 @@ Public Meetings calendar maintained by The Public Affairs department
     - get_sql - SQL Query
 
  
->To run manually: cd app/zoning  - must be on OakTree or connected via VPN  
- _ruby  zone.rb_  
-This will update the re-zoning requests data set on Socrata
+>To run manually: cd app/pm_calendar  - must be on OakTree or connected via VPN  
+ _public_meetings_cal.rb_  
+This will update the public calendar requests data set on Socrata
