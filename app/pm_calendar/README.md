@@ -1,6 +1,7 @@
 ### Public Meetings Calendar
 ##### Description 
-Public Meetings Google calendar maintained by The Public Affairs department.
+Public Meetings Google calendar maintained by The Public Affairs department found on this [event webpage](http://www.raleighnc.gov/home/content/ITechWebServices/Articles/Calendar.html)
+Calendar ID: 4oqnmtmbp7r21ar09ifb2pnv70@group.calendar.google.com
 
 ##### Links  
  [Public Calendar on Socrata](https://data.raleighnc.gov/d/snpm-8ugp)
@@ -15,4 +16,4 @@ Public Meetings Google calendar maintained by The Public Affairs department.
  
 >To run manually: cd app/pm_calendar  - must be on OakTree or connected via VPN  
  _public_meetings_cal.rb_  
-This will update the public calendar requests data set on Socrata
+This will update the entire public calendar requests data set on Socrata as a full replace of existing dataset.
