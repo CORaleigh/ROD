@@ -76,7 +76,7 @@ initialize process
     when 500..599, 2500..2599
       temp_dist = {"DISTRICT" => "DOWNTOWN"} 
     when 600..699, 2600..2699
-      temp_dist = {"DISTRICT" => "SOUTWEST"}  
+      temp_dist = {"DISTRICT" => "SOUTHWEST"}  
     else 
       temp_dist = {"DISTRICT" => ""} 
     end
